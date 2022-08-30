@@ -27,6 +27,36 @@
 		765023FF28BDC686000F3627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023FD28BDC686000F3627 /* AppDelegate.swift */; };
 		7650240128BDC86B000F3627 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7650240028BDC86B000F3627 /* GoogleService-Info.plist */; };
 		7650240228BDC86B000F3627 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7650240028BDC86B000F3627 /* GoogleService-Info.plist */; };
+		7650240628BDC92D000F3627 /* EQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650240528BDC92D000F3627 /* EQuoteView.swift */; };
+		7650240728BDC92D000F3627 /* EQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650240528BDC92D000F3627 /* EQuoteView.swift */; };
+		7650240A28BDEDE6000F3627 /* EQuotesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650240928BDEDE6000F3627 /* EQuotesInteractor.swift */; };
+		7650240B28BDEDE6000F3627 /* EQuotesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650240928BDEDE6000F3627 /* EQuotesInteractor.swift */; };
+		7650240D28BDEDFC000F3627 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650240C28BDEDFC000F3627 /* Loadable.swift */; };
+		7650240E28BDEDFC000F3627 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650240C28BDEDFC000F3627 /* Loadable.swift */; };
+		7650241028BDEE2F000F3627 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650240F28BDEE2F000F3627 /* CancelBag.swift */; };
+		7650241128BDEE2F000F3627 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650240F28BDEE2F000F3627 /* CancelBag.swift */; };
+		7650241428BDEEB8000F3627 /* QuoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650241328BDEEB8000F3627 /* QuoteItem.swift */; };
+		7650241528BDEEB8000F3627 /* QuoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650241328BDEEB8000F3627 /* QuoteItem.swift */; };
+		7650241728BDF208000F3627 /* QuoteItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650241628BDF208000F3627 /* QuoteItemRow.swift */; };
+		7650241828BDF208000F3627 /* QuoteItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650241628BDF208000F3627 /* QuoteItemRow.swift */; };
+		7650241B28BDF280000F3627 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650241A28BDF280000F3627 /* String+Extensions.swift */; };
+		7650241C28BDF280000F3627 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650241A28BDF280000F3627 /* String+Extensions.swift */; };
+		7650241F28BE095F000F3627 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650241E28BE095F000F3627 /* Theme.swift */; };
+		7650242028BE095F000F3627 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650241E28BE095F000F3627 /* Theme.swift */; };
+		7650242228BE12FC000F3627 /* AddNewQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650242128BE12FC000F3627 /* AddNewQuoteView.swift */; };
+		7650242328BE12FC000F3627 /* AddNewQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650242128BE12FC000F3627 /* AddNewQuoteView.swift */; };
+		7650242528BE1330000F3627 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650242428BE1330000F3627 /* Screen.swift */; };
+		7650242628BE1330000F3627 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650242428BE1330000F3627 /* Screen.swift */; };
+		7650242828BE1363000F3627 /* GrowingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650242728BE1363000F3627 /* GrowingButton.swift */; };
+		7650242928BE1363000F3627 /* GrowingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650242728BE1363000F3627 /* GrowingButton.swift */; };
+		7650242B28BE13B8000F3627 /* NewQuoteContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650242A28BE13B8000F3627 /* NewQuoteContent.swift */; };
+		7650242C28BE13B8000F3627 /* NewQuoteContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650242A28BE13B8000F3627 /* NewQuoteContent.swift */; };
+		7650242E28BE38AC000F3627 /* UserDefault+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650242D28BE38AC000F3627 /* UserDefault+Data.swift */; };
+		7650242F28BE38AC000F3627 /* UserDefault+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650242D28BE38AC000F3627 /* UserDefault+Data.swift */; };
+		7650243128BE3979000F3627 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650243028BE3979000F3627 /* Settings.swift */; };
+		7650243228BE3979000F3627 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650243028BE3979000F3627 /* Settings.swift */; };
+		7650243528BE3AD8000F3627 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650243428BE3AD8000F3627 /* LearnView.swift */; };
+		7650243628BE3AD8000F3627 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650243428BE3AD8000F3627 /* LearnView.swift */; };
 		B917CDCFC3A0BC2C84E22122 /* Pods_EQuotes__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A4B4036418A5246C9DE40 /* Pods_EQuotes__macOS_.framework */; };
 		E2628F23C0D9A79106014EB3 /* Pods_EQuotes__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939F992ECBC29D986D8927B5 /* Pods_EQuotes__iOS_.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +76,21 @@
 		765023FA28BDC4F6000F3627 /* Interacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interacters.swift; sourceTree = "<group>"; };
 		765023FD28BDC686000F3627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7650240028BDC86B000F3627 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7650240528BDC92D000F3627 /* EQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EQuoteView.swift; sourceTree = "<group>"; };
+		7650240928BDEDE6000F3627 /* EQuotesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EQuotesInteractor.swift; sourceTree = "<group>"; };
+		7650240C28BDEDFC000F3627 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		7650240F28BDEE2F000F3627 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
+		7650241328BDEEB8000F3627 /* QuoteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteItem.swift; sourceTree = "<group>"; };
+		7650241628BDF208000F3627 /* QuoteItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteItemRow.swift; sourceTree = "<group>"; };
+		7650241A28BDF280000F3627 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		7650241E28BE095F000F3627 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		7650242128BE12FC000F3627 /* AddNewQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewQuoteView.swift; sourceTree = "<group>"; };
+		7650242428BE1330000F3627 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		7650242728BE1363000F3627 /* GrowingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButton.swift; sourceTree = "<group>"; };
+		7650242A28BE13B8000F3627 /* NewQuoteContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewQuoteContent.swift; sourceTree = "<group>"; };
+		7650242D28BE38AC000F3627 /* UserDefault+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Data.swift"; sourceTree = "<group>"; };
+		7650243028BE3979000F3627 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		7650243428BE3AD8000F3627 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		824A4B4036418A5246C9DE40 /* Pods_EQuotes__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EQuotes__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		939F992ECBC29D986D8927B5 /* Pods_EQuotes__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EQuotes__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2D489EEA47B8DEA3440FAB /* Pods-EQuotes (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EQuotes (macOS).debug.xcconfig"; path = "Target Support Files/Pods-EQuotes (macOS)/Pods-EQuotes (macOS).debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,10 +144,15 @@
 		765023CE28BCE5EB000F3627 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7650241D28BE0952000F3627 /* Common */,
 				765023FD28BDC686000F3627 /* AppDelegate.swift */,
 				765023CF28BCE5EB000F3627 /* EQuotesApp.swift */,
 				765023D028BCE5EB000F3627 /* ContentView.swift */,
 				765023ED28BDC0DA000F3627 /* Utilities */,
+				7650240828BDEDD5000F3627 /* Interactors */,
+				7650240328BDC8F9000F3627 /* Modules */,
+				7650241928BDF272000F3627 /* Extensions */,
+				7650241228BDEEA6000F3627 /* Models */,
 				765023D128BCE5EC000F3627 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -133,8 +183,74 @@
 				765023F428BDC438000F3627 /* DIContainer.swift */,
 				765023F728BDC4C3000F3627 /* AppState.swift */,
 				765023FA28BDC4F6000F3627 /* Interacters.swift */,
+				7650240C28BDEDFC000F3627 /* Loadable.swift */,
+				7650240F28BDEE2F000F3627 /* CancelBag.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7650240328BDC8F9000F3627 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7650240528BDC92D000F3627 /* EQuoteView.swift */,
+				7650243328BE3ACB000F3627 /* LearnView */,
+				7650240428BDC90D000F3627 /* EQuoteView */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7650240428BDC90D000F3627 /* EQuoteView */ = {
+			isa = PBXGroup;
+			children = (
+				7650241628BDF208000F3627 /* QuoteItemRow.swift */,
+				7650242128BE12FC000F3627 /* AddNewQuoteView.swift */,
+				7650242A28BE13B8000F3627 /* NewQuoteContent.swift */,
+			);
+			path = EQuoteView;
+			sourceTree = "<group>";
+		};
+		7650240828BDEDD5000F3627 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				7650240928BDEDE6000F3627 /* EQuotesInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		7650241228BDEEA6000F3627 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7650241328BDEEB8000F3627 /* QuoteItem.swift */,
+				7650242D28BE38AC000F3627 /* UserDefault+Data.swift */,
+				7650243028BE3979000F3627 /* Settings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7650241928BDF272000F3627 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7650241A28BDF280000F3627 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7650241D28BE0952000F3627 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7650241E28BE095F000F3627 /* Theme.swift */,
+				7650242428BE1330000F3627 /* Screen.swift */,
+				7650242728BE1363000F3627 /* GrowingButton.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7650243328BE3ACB000F3627 /* LearnView */ = {
+			isa = PBXGroup;
+			children = (
+				7650243428BE3AD8000F3627 /* LearnView.swift */,
+			);
+			path = LearnView;
 			sourceTree = "<group>";
 		};
 		927948D427949D6526833463 /* Frameworks */ = {
@@ -331,13 +447,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7650240628BDC92D000F3627 /* EQuoteView.swift in Sources */,
 				765023FE28BDC686000F3627 /* AppDelegate.swift in Sources */,
+				7650241028BDEE2F000F3627 /* CancelBag.swift in Sources */,
 				765023EF28BDC0EA000F3627 /* Store.swift in Sources */,
+				7650242E28BE38AC000F3627 /* UserDefault+Data.swift in Sources */,
 				765023F228BDC413000F3627 /* AppEnvironment.swift in Sources */,
+				7650242828BE1363000F3627 /* GrowingButton.swift in Sources */,
+				7650242528BE1330000F3627 /* Screen.swift in Sources */,
+				7650241728BDF208000F3627 /* QuoteItemRow.swift in Sources */,
+				7650241428BDEEB8000F3627 /* QuoteItem.swift in Sources */,
 				765023F528BDC438000F3627 /* DIContainer.swift in Sources */,
+				7650243528BE3AD8000F3627 /* LearnView.swift in Sources */,
+				7650240A28BDEDE6000F3627 /* EQuotesInteractor.swift in Sources */,
+				7650241F28BE095F000F3627 /* Theme.swift in Sources */,
 				765023F828BDC4C3000F3627 /* AppState.swift in Sources */,
+				7650241B28BDF280000F3627 /* String+Extensions.swift in Sources */,
 				765023FB28BDC4F6000F3627 /* Interacters.swift in Sources */,
+				7650242B28BE13B8000F3627 /* NewQuoteContent.swift in Sources */,
+				7650240D28BDEDFC000F3627 /* Loadable.swift in Sources */,
 				765023E128BCE5EC000F3627 /* ContentView.swift in Sources */,
+				7650242228BE12FC000F3627 /* AddNewQuoteView.swift in Sources */,
+				7650243128BE3979000F3627 /* Settings.swift in Sources */,
 				765023DF28BCE5EC000F3627 /* EQuotesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,13 +477,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7650240728BDC92D000F3627 /* EQuoteView.swift in Sources */,
 				765023FF28BDC686000F3627 /* AppDelegate.swift in Sources */,
+				7650241128BDEE2F000F3627 /* CancelBag.swift in Sources */,
 				765023F028BDC0EA000F3627 /* Store.swift in Sources */,
+				7650242F28BE38AC000F3627 /* UserDefault+Data.swift in Sources */,
 				765023F328BDC413000F3627 /* AppEnvironment.swift in Sources */,
+				7650242928BE1363000F3627 /* GrowingButton.swift in Sources */,
+				7650242628BE1330000F3627 /* Screen.swift in Sources */,
+				7650241828BDF208000F3627 /* QuoteItemRow.swift in Sources */,
+				7650241528BDEEB8000F3627 /* QuoteItem.swift in Sources */,
 				765023F628BDC438000F3627 /* DIContainer.swift in Sources */,
+				7650243628BE3AD8000F3627 /* LearnView.swift in Sources */,
+				7650240B28BDEDE6000F3627 /* EQuotesInteractor.swift in Sources */,
+				7650242028BE095F000F3627 /* Theme.swift in Sources */,
 				765023F928BDC4C3000F3627 /* AppState.swift in Sources */,
+				7650241C28BDF280000F3627 /* String+Extensions.swift in Sources */,
 				765023FC28BDC4F6000F3627 /* Interacters.swift in Sources */,
+				7650242C28BE13B8000F3627 /* NewQuoteContent.swift in Sources */,
+				7650240E28BDEDFC000F3627 /* Loadable.swift in Sources */,
 				765023E228BCE5EC000F3627 /* ContentView.swift in Sources */,
+				7650242328BE12FC000F3627 /* AddNewQuoteView.swift in Sources */,
+				7650243228BE3979000F3627 /* Settings.swift in Sources */,
 				765023E028BCE5EC000F3627 /* EQuotesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

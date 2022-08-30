@@ -18,8 +18,9 @@ struct EQuotesApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            EQuoteView()
                 .inject(appDelegate.environment.container)
+                .environmentObject(appDelegate.environment.container.appState.quoteState)
         }
     }
 }

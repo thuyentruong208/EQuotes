@@ -8,8 +8,13 @@
 import Foundation
 
 struct Interactors {
+    let quotesInteractor: EQuotesInteractor
+
+    init(quotesInteractor: EQuotesInteractor) {
+        self.quotesInteractor = quotesInteractor
+    }
 
     static var stub: Self {
-        .init()
+        .init(quotesInteractor: StubEQuotesInteractor())
     }
 }

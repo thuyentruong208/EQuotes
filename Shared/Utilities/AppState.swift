@@ -6,7 +6,15 @@
 //
 
 import Foundation
+import Firebase
 
-struct AppState {
-
+class AppState: ObservableObject {
+    var quoteState = QuoteState()
 }
+
+class QuoteState: ObservableObject {
+    @Published var quotesLoadable: Loadable<[QuoteItem]> = .notRequested
+    var quotesListener: ListenerRegistration?
+}
+
+
