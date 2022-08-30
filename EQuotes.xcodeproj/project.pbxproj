@@ -13,15 +13,23 @@
 		765023E228BCE5EC000F3627 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023D028BCE5EB000F3627 /* ContentView.swift */; };
 		765023E328BCE5EC000F3627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 765023D128BCE5EC000F3627 /* Assets.xcassets */; };
 		765023E428BCE5EC000F3627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 765023D128BCE5EC000F3627 /* Assets.xcassets */; };
+		B917CDCFC3A0BC2C84E22122 /* Pods_EQuotes__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A4B4036418A5246C9DE40 /* Pods_EQuotes__macOS_.framework */; };
+		E2628F23C0D9A79106014EB3 /* Pods_EQuotes__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939F992ECBC29D986D8927B5 /* Pods_EQuotes__iOS_.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CD3DC719D0210B758CF3E6A /* Pods-EQuotes (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EQuotes (iOS).debug.xcconfig"; path = "Target Support Files/Pods-EQuotes (iOS)/Pods-EQuotes (iOS).debug.xcconfig"; sourceTree = "<group>"; };
 		765023CF28BCE5EB000F3627 /* EQuotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EQuotesApp.swift; sourceTree = "<group>"; };
 		765023D028BCE5EB000F3627 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		765023D128BCE5EC000F3627 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		765023D628BCE5EC000F3627 /* EQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		765023DC28BCE5EC000F3627 /* EQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		765023DE28BCE5EC000F3627 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		824A4B4036418A5246C9DE40 /* Pods_EQuotes__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EQuotes__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		939F992ECBC29D986D8927B5 /* Pods_EQuotes__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EQuotes__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F2D489EEA47B8DEA3440FAB /* Pods-EQuotes (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EQuotes (macOS).debug.xcconfig"; path = "Target Support Files/Pods-EQuotes (macOS)/Pods-EQuotes (macOS).debug.xcconfig"; sourceTree = "<group>"; };
+		EE04968ECB71C37F52BD7D0C /* Pods-EQuotes (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EQuotes (macOS).release.xcconfig"; path = "Target Support Files/Pods-EQuotes (macOS)/Pods-EQuotes (macOS).release.xcconfig"; sourceTree = "<group>"; };
+		FDBC9B201214C4959B1B187B /* Pods-EQuotes (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EQuotes (iOS).release.xcconfig"; path = "Target Support Files/Pods-EQuotes (iOS)/Pods-EQuotes (iOS).release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2628F23C0D9A79106014EB3 /* Pods_EQuotes__iOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,18 +45,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B917CDCFC3A0BC2C84E22122 /* Pods_EQuotes__macOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F98921E4DC4AD7EF423B80F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2CD3DC719D0210B758CF3E6A /* Pods-EQuotes (iOS).debug.xcconfig */,
+				FDBC9B201214C4959B1B187B /* Pods-EQuotes (iOS).release.xcconfig */,
+				9F2D489EEA47B8DEA3440FAB /* Pods-EQuotes (macOS).debug.xcconfig */,
+				EE04968ECB71C37F52BD7D0C /* Pods-EQuotes (macOS).release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		765023C928BCE5EB000F3627 = {
 			isa = PBXGroup;
 			children = (
 				765023CE28BCE5EB000F3627 /* Shared */,
 				765023DD28BCE5EC000F3627 /* macOS */,
 				765023D728BCE5EC000F3627 /* Products */,
+				1F98921E4DC4AD7EF423B80F /* Pods */,
+				927948D427949D6526833463 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +102,15 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
+		927948D427949D6526833463 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				939F992ECBC29D986D8927B5 /* Pods_EQuotes__iOS_.framework */,
+				824A4B4036418A5246C9DE40 /* Pods_EQuotes__macOS_.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,9 +118,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 765023E728BCE5EC000F3627 /* Build configuration list for PBXNativeTarget "EQuotes (iOS)" */;
 			buildPhases = (
+				68BFA8ACE77A26A0CD2B46D4 /* [CP] Check Pods Manifest.lock */,
 				765023D228BCE5EC000F3627 /* Sources */,
 				765023D328BCE5EC000F3627 /* Frameworks */,
 				765023D428BCE5EC000F3627 /* Resources */,
+				2CCCF45E36579CA9C983B183 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -102,9 +137,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 765023EA28BCE5EC000F3627 /* Build configuration list for PBXNativeTarget "EQuotes (macOS)" */;
 			buildPhases = (
+				5DB62C5ECBD510A626548548 /* [CP] Check Pods Manifest.lock */,
 				765023D828BCE5EC000F3627 /* Sources */,
 				765023D928BCE5EC000F3627 /* Frameworks */,
 				765023DA28BCE5EC000F3627 /* Resources */,
+				E26A3B86FE9D26A0EA12B787 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,6 +207,87 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2CCCF45E36579CA9C983B183 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EQuotes (iOS)/Pods-EQuotes (iOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EQuotes (iOS)/Pods-EQuotes (iOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EQuotes (iOS)/Pods-EQuotes (iOS)-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DB62C5ECBD510A626548548 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EQuotes (macOS)-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68BFA8ACE77A26A0CD2B46D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EQuotes (iOS)-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E26A3B86FE9D26A0EA12B787 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EQuotes (macOS)/Pods-EQuotes (macOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EQuotes (macOS)/Pods-EQuotes (macOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EQuotes (macOS)/Pods-EQuotes (macOS)-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		765023D228BCE5EC000F3627 /* Sources */ = {
@@ -304,6 +422,7 @@
 		};
 		765023E828BCE5EC000F3627 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CD3DC719D0210B758CF3E6A /* Pods-EQuotes (iOS).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -334,6 +453,7 @@
 		};
 		765023E928BCE5EC000F3627 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDBC9B201214C4959B1B187B /* Pods-EQuotes (iOS).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -365,6 +485,7 @@
 		};
 		765023EB28BCE5EC000F3627 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F2D489EEA47B8DEA3440FAB /* Pods-EQuotes (macOS).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -393,6 +514,7 @@
 		};
 		765023EC28BCE5EC000F3627 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE04968ECB71C37F52BD7D0C /* Pods-EQuotes (macOS).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
