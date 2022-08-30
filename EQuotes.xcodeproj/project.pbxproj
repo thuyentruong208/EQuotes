@@ -13,6 +13,20 @@
 		765023E228BCE5EC000F3627 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023D028BCE5EB000F3627 /* ContentView.swift */; };
 		765023E328BCE5EC000F3627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 765023D128BCE5EC000F3627 /* Assets.xcassets */; };
 		765023E428BCE5EC000F3627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 765023D128BCE5EC000F3627 /* Assets.xcassets */; };
+		765023EF28BDC0EA000F3627 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023EE28BDC0EA000F3627 /* Store.swift */; };
+		765023F028BDC0EA000F3627 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023EE28BDC0EA000F3627 /* Store.swift */; };
+		765023F228BDC413000F3627 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023F128BDC413000F3627 /* AppEnvironment.swift */; };
+		765023F328BDC413000F3627 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023F128BDC413000F3627 /* AppEnvironment.swift */; };
+		765023F528BDC438000F3627 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023F428BDC438000F3627 /* DIContainer.swift */; };
+		765023F628BDC438000F3627 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023F428BDC438000F3627 /* DIContainer.swift */; };
+		765023F828BDC4C3000F3627 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023F728BDC4C3000F3627 /* AppState.swift */; };
+		765023F928BDC4C3000F3627 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023F728BDC4C3000F3627 /* AppState.swift */; };
+		765023FB28BDC4F6000F3627 /* Interacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023FA28BDC4F6000F3627 /* Interacters.swift */; };
+		765023FC28BDC4F6000F3627 /* Interacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023FA28BDC4F6000F3627 /* Interacters.swift */; };
+		765023FE28BDC686000F3627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023FD28BDC686000F3627 /* AppDelegate.swift */; };
+		765023FF28BDC686000F3627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023FD28BDC686000F3627 /* AppDelegate.swift */; };
+		7650240128BDC86B000F3627 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7650240028BDC86B000F3627 /* GoogleService-Info.plist */; };
+		7650240228BDC86B000F3627 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7650240028BDC86B000F3627 /* GoogleService-Info.plist */; };
 		B917CDCFC3A0BC2C84E22122 /* Pods_EQuotes__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A4B4036418A5246C9DE40 /* Pods_EQuotes__macOS_.framework */; };
 		E2628F23C0D9A79106014EB3 /* Pods_EQuotes__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939F992ECBC29D986D8927B5 /* Pods_EQuotes__iOS_.framework */; };
 /* End PBXBuildFile section */
@@ -25,6 +39,13 @@
 		765023D628BCE5EC000F3627 /* EQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		765023DC28BCE5EC000F3627 /* EQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		765023DE28BCE5EC000F3627 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		765023EE28BDC0EA000F3627 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		765023F128BDC413000F3627 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		765023F428BDC438000F3627 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		765023F728BDC4C3000F3627 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		765023FA28BDC4F6000F3627 /* Interacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interacters.swift; sourceTree = "<group>"; };
+		765023FD28BDC686000F3627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7650240028BDC86B000F3627 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		824A4B4036418A5246C9DE40 /* Pods_EQuotes__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EQuotes__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		939F992ECBC29D986D8927B5 /* Pods_EQuotes__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EQuotes__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2D489EEA47B8DEA3440FAB /* Pods-EQuotes (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EQuotes (macOS).debug.xcconfig"; path = "Target Support Files/Pods-EQuotes (macOS)/Pods-EQuotes (macOS).debug.xcconfig"; sourceTree = "<group>"; };
@@ -60,13 +81,13 @@
 				9F2D489EEA47B8DEA3440FAB /* Pods-EQuotes (macOS).debug.xcconfig */,
 				EE04968ECB71C37F52BD7D0C /* Pods-EQuotes (macOS).release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		765023C928BCE5EB000F3627 = {
 			isa = PBXGroup;
 			children = (
+				7650240028BDC86B000F3627 /* GoogleService-Info.plist */,
 				765023CE28BCE5EB000F3627 /* Shared */,
 				765023DD28BCE5EC000F3627 /* macOS */,
 				765023D728BCE5EC000F3627 /* Products */,
@@ -78,8 +99,10 @@
 		765023CE28BCE5EB000F3627 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				765023FD28BDC686000F3627 /* AppDelegate.swift */,
 				765023CF28BCE5EB000F3627 /* EQuotesApp.swift */,
 				765023D028BCE5EB000F3627 /* ContentView.swift */,
+				765023ED28BDC0DA000F3627 /* Utilities */,
 				765023D128BCE5EC000F3627 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -100,6 +123,18 @@
 				765023DE28BCE5EC000F3627 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		765023ED28BDC0DA000F3627 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				765023EE28BDC0EA000F3627 /* Store.swift */,
+				765023F128BDC413000F3627 /* AppEnvironment.swift */,
+				765023F428BDC438000F3627 /* DIContainer.swift */,
+				765023F728BDC4C3000F3627 /* AppState.swift */,
+				765023FA28BDC4F6000F3627 /* Interacters.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		927948D427949D6526833463 /* Frameworks */ = {
@@ -195,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				765023E328BCE5EC000F3627 /* Assets.xcassets in Resources */,
+				7650240128BDC86B000F3627 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				765023E428BCE5EC000F3627 /* Assets.xcassets in Resources */,
+				7650240228BDC86B000F3627 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +331,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				765023FE28BDC686000F3627 /* AppDelegate.swift in Sources */,
+				765023EF28BDC0EA000F3627 /* Store.swift in Sources */,
+				765023F228BDC413000F3627 /* AppEnvironment.swift in Sources */,
+				765023F528BDC438000F3627 /* DIContainer.swift in Sources */,
+				765023F828BDC4C3000F3627 /* AppState.swift in Sources */,
+				765023FB28BDC4F6000F3627 /* Interacters.swift in Sources */,
 				765023E128BCE5EC000F3627 /* ContentView.swift in Sources */,
 				765023DF28BCE5EC000F3627 /* EQuotesApp.swift in Sources */,
 			);
@@ -303,6 +346,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				765023FF28BDC686000F3627 /* AppDelegate.swift in Sources */,
+				765023F028BDC0EA000F3627 /* Store.swift in Sources */,
+				765023F328BDC413000F3627 /* AppEnvironment.swift in Sources */,
+				765023F628BDC438000F3627 /* DIContainer.swift in Sources */,
+				765023F928BDC4C3000F3627 /* AppState.swift in Sources */,
+				765023FC28BDC4F6000F3627 /* Interacters.swift in Sources */,
 				765023E228BCE5EC000F3627 /* ContentView.swift in Sources */,
 				765023E028BCE5EC000F3627 /* EQuotesApp.swift in Sources */,
 			);
