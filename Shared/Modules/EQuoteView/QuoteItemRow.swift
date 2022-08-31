@@ -60,7 +60,7 @@ struct QuoteItemRow: View {
 
         }
         .onChange(of: show, perform: { newValue in
-            withAnimation {
+            withAnimation(.linear(duration: 0.2)) {
                 degree = show ? 90 : 0
             }
 

@@ -25,12 +25,13 @@ struct BackQuoteItemRow: View {
             .cornerRadius(20)
         }
         .onChange(of: show, perform: { newValue in
-            withAnimation {
+            withAnimation(.linear(duration: 0.2)) {
                 degree = show ? -90 : 0
             }
 
         })
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
+        .frame(maxHeight: show ? 400 : 0)
     }
 }
 

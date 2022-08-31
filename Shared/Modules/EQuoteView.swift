@@ -18,7 +18,6 @@ struct EQuoteView: View {
     @State var showBackFaceQuoteItems = Set<String>()
     @State var backDegree = 0.0
     @State var frontDegree = -90.0
-    let durationAndDelay : CGFloat = 0.3
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -153,22 +152,6 @@ extension EQuoteView {
             showBackFaceQuoteItems.remove(quoteItem.rID)
         } else {
             showBackFaceQuoteItems.insert(quoteItem.rID)
-        }
-
-        if front {
-            withAnimation(.linear(duration: durationAndDelay)) {
-                backDegree = 90
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-                frontDegree = 0
-            }
-        } else {
-            withAnimation(.linear(duration: durationAndDelay)) {
-                frontDegree = -90
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-                backDegree = 0
-            }
         }
     }
 
