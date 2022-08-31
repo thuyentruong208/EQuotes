@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct Screen<Content: View>: View {
-    let content: () -> Content
+    let backgroundColor: Color
+    let content: Content
+
+    init(_ backgroundColor: Color, @ViewBuilder content: () -> Content) {
+        self.backgroundColor = backgroundColor
+        self.content = content()
+    }
 
     var body: some View {
         ZStack {
-//            Color..edgesIgnoringSafeArea(.all)
-            content()
+            backgroundColor.edgesIgnoringSafeArea(.all)
+            content
         }
     }
 }

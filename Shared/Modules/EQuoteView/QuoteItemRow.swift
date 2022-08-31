@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MarkdownUI
 
 struct QuoteItemRow: View {
     var quoteItem: QuoteItem
@@ -13,14 +14,8 @@ struct QuoteItemRow: View {
     var body: some View {
         VStack {
             Text(quoteItem.en.markdownToAttributed())
-                #if os(iOS)
-                .font(.custom("Avenir Next Condensed", size: 18))
-                #endif
-                #if os(macOS)
-                .font(.custom("Avenir Next Condensed", size: 22))
-                #endif
+                .textFormatting(.primaryText)
                 .padding(.vertical, 5)
-                .foregroundColor(Color.black)
                 .multilineTextAlignment(.center)
 
             if let viText = quoteItem.vi, !viText.isEmpty {
@@ -28,7 +23,7 @@ struct QuoteItemRow: View {
                     .background(Color.black)
 
                 Text(viText.markdownToAttributed())
-                    .font(.callout)
+                    .textFormatting(.seconddaryText)
                     .padding(.vertical, 5)
                     .foregroundColor(Color.black)
                     .multilineTextAlignment(.center)
@@ -45,7 +40,8 @@ struct QuoteItemRow_Previews: PreviewProvider {
         QuoteItemRow(quoteItem: QuoteItem(
             en: "* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text.",
             vi: "Sme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to say",
-            tags: ["🎽 DailyLife", "🥰 Love"])
+            ask: ""
+            )
         )
     }
 }

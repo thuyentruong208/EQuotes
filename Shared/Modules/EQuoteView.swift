@@ -14,11 +14,11 @@ struct EQuoteView: View {
     @AppStorage("learnMode") private var learnMode = false
 
     @State var showAddQuoteView: Bool = false
-//    @State var learnMode: Bool = false
+    @State var editQuoteView: QuoteItem?
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            theme.background.ignoresSafeArea()
+            colorTheme.background.ignoresSafeArea()
 
             ScrollView(.vertical, showsIndicators: true) {
                 HStack {
@@ -52,19 +52,18 @@ struct EQuoteView: View {
                         ForEach(quoteState.quotesLoadable.value ?? []) { (quoteItem) in
                             QuoteItemRow(quoteItem: quoteItem)
                                 .frame(maxWidth: 500)
-    //                            .onTapGesture {
-    //                                editQuoteView = quoteItem
-    //                            }
+                                .onTapGesture {
+                                    editQuoteView = quoteItem
+                                }
                         }
                     }
                     .padding()
                 }
 
             }
-//            .sheet(item: $editQuoteView, content: { quoteItem in
-//                AddNewQuoteView(quoteItem: quoteItem)
-//                    .frame(width: 800, height: 800, alignment: .center)
-//            })
+            .sheet(item: $editQuoteView, content: { quoteItem in
+                AddNewQuoteView(quoteItem: quoteItem)
+            })
             .overlay(
                 VStack(alignment: .trailing) {
 
@@ -125,7 +124,6 @@ extension EQuoteView {
 //            .buttonStyle(BlueButtonStyle())
             .sheet(isPresented: $showAddQuoteView) {
                 AddNewQuoteView()
-                    .frame(width: 800, height: 800, alignment: .center)
             }
     }
 

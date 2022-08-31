@@ -7,14 +7,22 @@
 
 import Foundation
 
-struct Interactors {
-    let quotesInteractor: EQuotesInteractor
+typealias InteractorResult<T> = (Result<T, Error>) -> Void
 
-    init(quotesInteractor: EQuotesInteractor) {
+struct Interactors {
+    let quotesInteractor: QuotesInteractor
+    let eventsInteractor: EventsInteractor
+
+    init(quotesInteractor:QuotesInteractor,
+         eventsInteractor: EventsInteractor) {
         self.quotesInteractor = quotesInteractor
+        self.eventsInteractor = eventsInteractor
     }
 
     static var stub: Self {
-        .init(quotesInteractor: StubEQuotesInteractor())
+        .init(
+            quotesInteractor: StubEQuotesInteractor(),
+            eventsInteractor: StubEventsInteractor()
+        )
     }
 }

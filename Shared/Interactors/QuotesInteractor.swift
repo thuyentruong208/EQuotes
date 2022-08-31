@@ -12,17 +12,17 @@ import Firebase
 import FirebaseFirestore
 import SwiftUI
 
-protocol EQuotesInteractor {
+protocol QuotesInteractor {
 
     func listenItems()
     func generateLearnQuotes()
     func loadSettings()
-//    func addQuote(item: QuoteItem, result: InteractorResult<Void>)
-//    func updateQuote(item: QuoteItem, result: InteractorResult<Void>)
+    func addQuote(item: QuoteItem, result: InteractorResult<Void>)
+    func updateQuote(item: QuoteItem, result: InteractorResult<Void>)
 
 }
 
-class RealEQuotesInteractor: ObservableObject, EQuotesInteractor {
+class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
 
     fileprivate let db = Firestore.firestore()
     fileprivate let appState: AppState
@@ -92,38 +92,39 @@ class RealEQuotesInteractor: ObservableObject, EQuotesInteractor {
 //        }
     }
 
-//    func addQuote(item: QuoteItem, result: InteractorResult<Void>) {
-//        do {
-//            _ = try db.collection("quoteItems").addDocument(from: item)
-//            result(.success(()))
-//        } catch {
-//            result(.failure(error))
-//        }
-//    }
-//
-//    func updateQuote(item: QuoteItem, result: (Result<Void, Error>) -> Void) {
-//        guard let id = item.id else { return }
-//
-//        do {
-//            try db.collection("quoteItems").document(id).setData(from: item)
-//            result(.success(()))
-//        } catch {
-//            result(.failure(error))
-//        }
-//    }
+    func addQuote(item: QuoteItem, result: InteractorResult<Void>) {
+        do {
+            _ = try db.collection("quoteItems").addDocument(from: item)
+            result(.success(()))
+        } catch {
+            result(.failure(error))
+        }
+    }
+
+    func updateQuote(item: QuoteItem, result: (Result<Void, Error>) -> Void) {
+        guard let id = item.id else { return }
+
+        do {
+            try db.collection("quoteItems").document(id).setData(from: item)
+            result(.success(()))
+        } catch {
+            result(.failure(error))
+        }
+    }
 }
 
-struct StubEQuotesInteractor: EQuotesInteractor {
+struct StubEQuotesInteractor: QuotesInteractor {
     func listenItems() {}
     func generateLearnQuotes() {}
     func loadSettings() {}
-//    func updateQuote(item: QuoteItem, result: (Result<Void, Error>) -> Void) {
-//
-//    }
+    func addQuote(item: QuoteItem, result: InteractorResult<Void>) {}
+    func updateQuote(item: QuoteItem, result: (Result<Void, Error>) -> Void) {
+
+    }
 //
 //    func listenItems(loadable: Binding<Loadable<[QuoteItem]>>, result: InteractorResult<ListenerRegistration>) {
 //
 //    }
-//    func addQuote(item: QuoteItem, result: InteractorResult<Void>) {}
+
 
 }

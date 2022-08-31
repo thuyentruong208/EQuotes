@@ -27,7 +27,10 @@ extension AppEnvironment {
 
         let appState = AppState()
 
-        let interactors = Interactors(quotesInteractor: RealEQuotesInteractor(appState: appState))
+        let interactors = Interactors(
+            quotesInteractor: RealEQuotesInteractor(appState: appState),
+            eventsInteractor: RealEventsInteractor()
+        )
 
         let diContainer = DIContainer(appState: appState, interactors: interactors)
         return AppEnvironment(container: diContainer)

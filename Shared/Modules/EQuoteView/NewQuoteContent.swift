@@ -11,20 +11,17 @@ class NewQuoteContent: ObservableObject {
 
     var id: String?
     @Published var content: String = ""
-
-    init(id: String? = nil, en: String? = nil, vi: String? = nil) {
-        self.id = id
-        self.content = en == nil ? "" : "\(en)\n\n\(vi)"
-    }
+    @Published var askContent: String = ""
 
     convenience init(quoteItem: QuoteItem?) {
         self.init()
         self.id = quoteItem?.id
-        self.content = quoteItem == nil ? "" : "\(quoteItem?.en ?? "")\n\n\n\(quoteItem?.vi ?? "")"
+        self.content = quoteItem == nil ? "" : "\(quoteItem?.en ?? "")||\(quoteItem?.vi ?? "")"
+        self.askContent = quoteItem?.ask ?? ""
     }
 
     func toQuoteItem() -> QuoteItem {
-        let components = content.components(separatedBy: "\n\n")
+        let components = content.components(separatedBy: "||")
         let en = components.first ?? ""
 
         var vi = components.count == 1 ? nil : components.last
@@ -36,12 +33,14 @@ class NewQuoteContent: ObservableObject {
         return QuoteItem(
             id: id,
             en: en,
-            vi: vi
+            vi: vi,
+            ask: askContent
         )
     }
 
     func clear() {
         id = nil
         content = ""
+        askContent = ""
     }
 }

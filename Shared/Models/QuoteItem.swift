@@ -13,7 +13,7 @@ struct QuoteItem: Codable, Identifiable {
     @DocumentID var id: String?
     var en: String
     var vi: String?
-    var tags: [String]?
+    var ask: String?
     @ServerTimestamp var createdAt: Timestamp?
 }
 
