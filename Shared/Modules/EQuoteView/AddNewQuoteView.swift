@@ -24,7 +24,10 @@ struct AddNewQuoteView: View {
             VStack(alignment: .leading) {
 
                 HStack {
-                    QuoteItemRow(quoteItem: newQuoteContent.toQuoteItem())
+                    QuoteItemRow(newQuoteContent.toQuoteItem(),
+                                 showEdit: false,
+                                 editQuoteView: .constant(nil),
+                                 show: .constant(true))
                         .border(Color.gray, width: 1)
                         .cornerRadius(10)
                         .frame(minWidth: 0, maxWidth: .infinity)
@@ -32,7 +35,7 @@ struct AddNewQuoteView: View {
 
                     Spacer(minLength: 30)
 
-                    BackQuoteItemRow(content: newQuoteContent.toQuoteItem().ask ?? "")
+                    BackQuoteItemRow(content: newQuoteContent.toQuoteItem().ask ?? "", show: .constant(true))
                         .border(Color.gray, width: 1)
                         .cornerRadius(10)
                         .frame(minWidth: 0, maxWidth: .infinity)

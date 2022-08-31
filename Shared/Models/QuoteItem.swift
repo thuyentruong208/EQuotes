@@ -15,6 +15,10 @@ struct QuoteItem: Codable, Identifiable {
     var vi: String?
     var ask: String?
     @ServerTimestamp var createdAt: Timestamp?
+
+    var rID: String {
+        id ?? ""
+    }
 }
 
 extension QuoteItem: Equatable {

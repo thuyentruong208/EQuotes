@@ -15,6 +15,10 @@ struct EQuoteView: View {
 
     @State var showAddQuoteView: Bool = false
     @State var editQuoteView: QuoteItem?
+    @State var showBackFaceQuoteItems = Set<String>()
+    @State var backDegree = 0.0
+    @State var frontDegree = -90.0
+    let durationAndDelay : CGFloat = 0.3
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -37,7 +41,7 @@ struct EQuoteView: View {
                         }
 
 #if os(macOS)
-                    addButton
+                        addButton
                             .padding(.top, 20)
 #endif
 
@@ -50,11 +54,7 @@ struct EQuoteView: View {
                 } else {
                     LazyVStack(alignment: .center, spacing: 20) {
                         ForEach(quoteState.quotesLoadable.value ?? []) { (quoteItem) in
-                            QuoteItemRow(quoteItem: quoteItem)
-                                .frame(maxWidth: 500)
-                                .onTapGesture {
-                                    editQuoteView = quoteItem
-                                }
+                            quoteItemView(quoteItem: quoteItem)
                         }
                     }
                     .padding()
@@ -68,10 +68,10 @@ struct EQuoteView: View {
                 VStack(alignment: .trailing) {
 
 
-//                    Toggle("", isOn: $random)
-//                        .foregroundColor(Color.pink)
-//                        .toggleStyle(SwitchToggleStyle(tint: Color.pink))
-//                        .padding(20)
+                    //                    Toggle("", isOn: $random)
+                    //                        .foregroundColor(Color.pink)
+                    //                        .toggleStyle(SwitchToggleStyle(tint: Color.pink))
+                    //                        .padding(20)
                     //#if os(macOS)
 
                     //#endif
@@ -96,11 +96,11 @@ struct EQuoteView: View {
             injected.interactors.quotesInteractor.listenItems()
         }
         .onDisappear {
-//            quotesListener?.remove()
+            //            quotesListener?.remove()
         }
-//        .onReceive(noticeQuoteItemIDUpdate) {
-//            self.noticeQuoteItemID = $0
-//        }
+        //        .onReceive(noticeQuoteItemIDUpdate) {
+        //            self.noticeQuoteItemID = $0
+        //        }
     }
 }
 
@@ -113,18 +113,63 @@ extension EQuoteView {
         }, label: {
             Label("Add", systemImage: "plus.message.fill")
         })
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
 
-            .buttonStyle(.borderless)
-            .tint(.pink)
-            .foregroundColor(.white)
-            .cornerRadius(40)
-            .background(Color("Color1"))
-//            .padding()
-//            .buttonStyle(BlueButtonStyle())
-            .sheet(isPresented: $showAddQuoteView) {
-                AddNewQuoteView()
+        .buttonStyle(.borderless)
+        .tint(.pink)
+        .foregroundColor(.white)
+        .cornerRadius(40)
+        .background(Color("Color1"))
+        //            .padding()
+        //            .buttonStyle(BlueButtonStyle())
+        .sheet(isPresented: $showAddQuoteView) {
+            AddNewQuoteView()
+        }
+    }
+
+    func quoteItemView(quoteItem: QuoteItem) -> some View {
+        let front = !showBackFaceQuoteItems.contains(quoteItem.id ?? "")
+
+        return ZStack {
+                QuoteItemRow(quoteItem, editQuoteView: $editQuoteView, show: .constant(front))
+                        .frame(maxWidth: 500)
+
+//                    .onTapGesture {
+//                        flipCard(quoteItem, !front)
+//                    }
+
+                BackQuoteItemRow(content: quoteItem.ask ?? "", show: .constant(!front))
+                    .frame(maxWidth: 500)
+
+        }
+        .onTapGesture {
+            flipCard(quoteItem, !front)
+        }
+
+    }
+
+    func flipCard(_ quoteItem: QuoteItem, _ front: Bool) {
+        if front {
+            showBackFaceQuoteItems.remove(quoteItem.rID)
+        } else {
+            showBackFaceQuoteItems.insert(quoteItem.rID)
+        }
+
+        if front {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                backDegree = 90
             }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                frontDegree = 0
+            }
+        } else {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                frontDegree = -90
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                backDegree = 0
+            }
+        }
     }
 
 }
