@@ -25,8 +25,6 @@ struct AddNewQuoteView: View {
 
                 HStack {
                     QuoteItemRow(newQuoteContent.toQuoteItem(),
-                                 showEdit: false,
-                                 editQuoteView: .constant(nil),
                                  show: .constant(true))
                         .border(Color.gray, width: 1)
                         .cornerRadius(10)

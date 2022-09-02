@@ -81,6 +81,7 @@ struct Theme {
 
 struct ColorTheme {
     let background = Color("BackgroundColor")
+    let accent = Color("AccentColor")
     let primary = Color("PrimaryColor")
     let textField = Color("TextFieldColor")
     let textFieldBackground = Color("TextFieldBackgroundColor")

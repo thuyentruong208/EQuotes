@@ -65,6 +65,10 @@
 		7650244128BF1B6D000F3627 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650243F28BF1B6D000F3627 /* Result+Extensions.swift */; };
 		7650244328BF1BA5000F3627 /* EventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650244228BF1BA5000F3627 /* EventsInteractor.swift */; };
 		7650244428BF1BA5000F3627 /* EventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650244228BF1BA5000F3627 /* EventsInteractor.swift */; };
+		766BFACD28C0A4A2007AB759 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766BFACC28C0A4A2007AB759 /* Date+Extensions.swift */; };
+		766BFACE28C0A4A2007AB759 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766BFACC28C0A4A2007AB759 /* Date+Extensions.swift */; };
+		766BFAD128C23716007AB759 /* QuoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766BFAD028C23716007AB759 /* QuoteListView.swift */; };
+		766BFAD228C23716007AB759 /* QuoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766BFAD028C23716007AB759 /* QuoteListView.swift */; };
 		B917CDCFC3A0BC2C84E22122 /* Pods_EQuotes__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A4B4036418A5246C9DE40 /* Pods_EQuotes__macOS_.framework */; };
 		E2628F23C0D9A79106014EB3 /* Pods_EQuotes__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939F992ECBC29D986D8927B5 /* Pods_EQuotes__iOS_.framework */; };
 /* End PBXBuildFile section */
@@ -102,6 +106,8 @@
 		7650243728BEFC83000F3627 /* BackQuoteItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackQuoteItemRow.swift; sourceTree = "<group>"; };
 		7650243F28BF1B6D000F3627 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
 		7650244228BF1BA5000F3627 /* EventsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInteractor.swift; sourceTree = "<group>"; };
+		766BFACC28C0A4A2007AB759 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		766BFAD028C23716007AB759 /* QuoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListView.swift; sourceTree = "<group>"; };
 		824A4B4036418A5246C9DE40 /* Pods_EQuotes__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EQuotes__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		939F992ECBC29D986D8927B5 /* Pods_EQuotes__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EQuotes__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2D489EEA47B8DEA3440FAB /* Pods-EQuotes (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EQuotes (macOS).debug.xcconfig"; path = "Target Support Files/Pods-EQuotes (macOS)/Pods-EQuotes (macOS).debug.xcconfig"; sourceTree = "<group>"; };
@@ -247,6 +253,7 @@
 			children = (
 				7650241A28BDF280000F3627 /* String+Extensions.swift */,
 				7650243F28BF1B6D000F3627 /* Result+Extensions.swift */,
+				766BFACC28C0A4A2007AB759 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -254,6 +261,7 @@
 		7650241D28BE0952000F3627 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				766BFACF28C23701007AB759 /* Views */,
 				7650241E28BE095F000F3627 /* Theme.swift */,
 				7650242428BE1330000F3627 /* Screen.swift */,
 				7650242728BE1363000F3627 /* GrowingButton.swift */,
@@ -267,6 +275,14 @@
 				7650243428BE3AD8000F3627 /* LearnView.swift */,
 			);
 			path = LearnView;
+			sourceTree = "<group>";
+		};
+		766BFACF28C23701007AB759 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				766BFAD028C23716007AB759 /* QuoteListView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		927948D427949D6526833463 /* Frameworks */ = {
@@ -479,10 +495,12 @@
 				765023EF28BDC0EA000F3627 /* Store.swift in Sources */,
 				7650242E28BE38AC000F3627 /* UserDefault+Data.swift in Sources */,
 				765023F228BDC413000F3627 /* AppEnvironment.swift in Sources */,
+				766BFAD128C23716007AB759 /* QuoteListView.swift in Sources */,
 				7650242828BE1363000F3627 /* GrowingButton.swift in Sources */,
 				7650243828BEFC83000F3627 /* BackQuoteItemRow.swift in Sources */,
 				7650242528BE1330000F3627 /* Screen.swift in Sources */,
 				7650241728BDF208000F3627 /* QuoteItemRow.swift in Sources */,
+				766BFACD28C0A4A2007AB759 /* Date+Extensions.swift in Sources */,
 				7650241428BDEEB8000F3627 /* QuoteItem.swift in Sources */,
 				765023F528BDC438000F3627 /* DIContainer.swift in Sources */,
 				7650243528BE3AD8000F3627 /* LearnView.swift in Sources */,
@@ -512,10 +530,12 @@
 				765023F028BDC0EA000F3627 /* Store.swift in Sources */,
 				7650242F28BE38AC000F3627 /* UserDefault+Data.swift in Sources */,
 				765023F328BDC413000F3627 /* AppEnvironment.swift in Sources */,
+				766BFAD228C23716007AB759 /* QuoteListView.swift in Sources */,
 				7650242928BE1363000F3627 /* GrowingButton.swift in Sources */,
 				7650243928BEFC83000F3627 /* BackQuoteItemRow.swift in Sources */,
 				7650242628BE1330000F3627 /* Screen.swift in Sources */,
 				7650241828BDF208000F3627 /* QuoteItemRow.swift in Sources */,
+				766BFACE28C0A4A2007AB759 /* Date+Extensions.swift in Sources */,
 				7650241528BDEEB8000F3627 /* QuoteItem.swift in Sources */,
 				765023F628BDC438000F3627 /* DIContainer.swift in Sources */,
 				7650243628BE3AD8000F3627 /* LearnView.swift in Sources */,

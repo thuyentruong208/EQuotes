@@ -11,54 +11,36 @@ import MarkdownUI
 struct QuoteItemRow: View {
 
     var quoteItem: QuoteItem
-    var showEdit: Bool
-    @Binding var editQuoteView: QuoteItem?
     @Binding var show: Bool
     @State var degree: Double = 0
 
-    init(_ quoteItem: QuoteItem, showEdit: Bool = true, editQuoteView: Binding<QuoteItem?>, show: Binding<Bool>) {
+    init(_ quoteItem: QuoteItem, show: Binding<Bool>) {
         self.quoteItem = quoteItem
-        self.showEdit = showEdit
-        self._editQuoteView = editQuoteView
         self._show = show
     }
 
     var body: some View {
-        ZStack {
-            VStack {
-                Text(quoteItem.en.markdownToAttributed())
-                    .textFormatting(.primaryText)
+        VStack {
+            Text(quoteItem.en.markdownToAttributed())
+                .textFormatting(.primaryText)
+                .padding(.vertical, 5)
+                .multilineTextAlignment(.center)
+
+            if let viText = quoteItem.vi, !viText.isEmpty {
+                Divider()
+                    .background(Color.black)
+
+                Text(viText.markdownToAttributed())
+                    .textFormatting(.seconddaryText)
                     .padding(.vertical, 5)
+                    .foregroundColor(Color.black)
                     .multilineTextAlignment(.center)
-
-                if let viText = quoteItem.vi, !viText.isEmpty {
-                    Divider()
-                        .background(Color.black)
-
-                    Text(viText.markdownToAttributed())
-                        .textFormatting(.seconddaryText)
-                        .padding(.vertical, 5)
-                        .foregroundColor(Color.black)
-                        .multilineTextAlignment(.center)
-                }
             }
-            .frame(alignment: .topLeading)
-            .padding()
-            .background(Color.white.opacity(0.65))
-            .cornerRadius(20)
-
-            if showEdit {
-                Image(systemName: "pencil.circle.fill")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                    .offset(x: -10, y: -10)
-                    .onTapGesture {
-                        editQuoteView = quoteItem
-                    }
-            }
-
         }
+        .frame(alignment: .topLeading)
+        .padding()
+        .background(Color.white.opacity(0.65))
+        .cornerRadius(20)
         .onChange(of: show, perform: { newValue in
             withAnimation(.linear(duration: 0.2)) {
                 degree = show ? 90 : 0
@@ -77,7 +59,6 @@ struct QuoteItemRow_Previews: PreviewProvider {
             vi: "Sme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to say",
             ask: ""
         ),
-                     editQuoteView: .constant(nil),
                      show: .constant(true)
         )
     }

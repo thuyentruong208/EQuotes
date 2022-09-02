@@ -12,12 +12,7 @@ struct EQuoteView: View {
     @Environment(\.injected) private var injected: DIContainer
     @EnvironmentObject var quoteState: QuoteState
     @AppStorage("learnMode") private var learnMode = false
-
     @State var showAddQuoteView: Bool = false
-    @State var editQuoteView: QuoteItem?
-    @State var showBackFaceQuoteItems = Set<String>()
-    @State var backDegree = 0.0
-    @State var frontDegree = -90.0
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -51,18 +46,11 @@ struct EQuoteView: View {
                 if learnMode {
                     LearnView()
                 } else {
-                    LazyVStack(alignment: .center, spacing: 20) {
-                        ForEach(quoteState.quotesLoadable.value ?? []) { (quoteItem) in
-                            quoteItemView(quoteItem: quoteItem)
-                        }
-                    }
-                    .padding()
+                    QuoteListView(quoteItems: quoteState.quotesLoadable.value ?? [])
                 }
 
             }
-            .sheet(item: $editQuoteView, content: { quoteItem in
-                AddNewQuoteView(quoteItem: quoteItem)
-            })
+
             .overlay(
                 VStack(alignment: .trailing) {
 
@@ -123,35 +111,6 @@ extension EQuoteView {
         //            .buttonStyle(BlueButtonStyle())
         .sheet(isPresented: $showAddQuoteView) {
             AddNewQuoteView()
-        }
-    }
-
-    func quoteItemView(quoteItem: QuoteItem) -> some View {
-        let front = !showBackFaceQuoteItems.contains(quoteItem.id ?? "")
-
-        return ZStack {
-                QuoteItemRow(quoteItem, editQuoteView: $editQuoteView, show: .constant(front))
-                        .frame(maxWidth: 500)
-
-//                    .onTapGesture {
-//                        flipCard(quoteItem, !front)
-//                    }
-
-                BackQuoteItemRow(content: quoteItem.ask ?? "", show: .constant(!front))
-                    .frame(maxWidth: 500)
-
-        }
-        .onTapGesture {
-            flipCard(quoteItem, !front)
-        }
-
-    }
-
-    func flipCard(_ quoteItem: QuoteItem, _ front: Bool) {
-        if front {
-            showBackFaceQuoteItems.remove(quoteItem.rID)
-        } else {
-            showBackFaceQuoteItems.insert(quoteItem.rID)
         }
     }
 

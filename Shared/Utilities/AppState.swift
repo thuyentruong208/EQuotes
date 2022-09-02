@@ -15,6 +15,10 @@ class AppState: ObservableObject {
 class QuoteState: ObservableObject {
     @Published var quotesLoadable: Loadable<[QuoteItem]> = .notRequested
     var quotesListener: ListenerRegistration?
+    @Published var toDateLoadable: Loadable<Date?> = .notRequested
+    @Published var learnQuotesLoadable: Loadable<[QuoteItem]> = .notRequested
+    var learnQuotesListener: ListenerRegistration?
+    var toDateDataListener: ListenerRegistration?
 }
 
 

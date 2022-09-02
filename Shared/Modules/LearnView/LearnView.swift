@@ -9,24 +9,34 @@ import SwiftUI
 
 struct LearnView: View {
     @Environment(\.injected) private var injected: DIContainer
+    @EnvironmentObject var quoteState: QuoteState
 
 
     var body: some View {
 
+        VStack {
+            if let toDate = quoteState.toDateLoadable.value {
+                Text(toDate?.formatted() ?? "")
+                    .textFormatting(.primaryText)
+            }
 
+            let quoteItems = quoteState.learnQuotesLoadable.value ?? []
+            if quoteItems.isEmpty {
+                Text("Hurray!!!")
+            } else {
+                QuoteListView(quoteItems: quoteItems)
+            }
 
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-
-        Button {
-//            injected.interactors.quotesInteractor.generateLearnQuotes()
-            injected.interactors.quotesInteractor.loadSettings()
-
-//                        submitNewQuote()
-
-        } label: {
-            Text("SUBMIT")
         }
-        .buttonStyle(GrowingButton())
+        .onAppear {
+            print("Come here")
+            injected.interactors.quotesInteractor.loadSettings()
+            injected.interactors.quotesInteractor
+                .loadLearnQuotes()
+        }
+        .onChange(of: quoteState.toDateLoadable) { _ in
+            injected.interactors.quotesInteractor.generateLearnQuotes()
+        }
 
     }
 }
