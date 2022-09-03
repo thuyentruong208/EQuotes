@@ -20,11 +20,13 @@ struct LearnView: View {
                     .textFormatting(.primaryText)
             }
 
+            Text("Swipe right to done")
+
             let quoteItems = quoteState.learnQuotesLoadable.value ?? []
             if quoteItems.isEmpty {
                 Text("Hurray!!!")
             } else {
-                QuoteListView(quoteItems: quoteItems)
+                QuoteListView(quoteItems: quoteItems, isLearnMode: true)
             }
 
         }

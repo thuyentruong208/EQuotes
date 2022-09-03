@@ -20,6 +20,7 @@ protocol QuotesInteractor {
     func addQuote(item: QuoteItem, result: InteractorResult<Void>)
     func updateQuote(item: QuoteItem, result: InteractorResult<Void>)
     func loadLearnQuotes()
+    func doneLearnQuote(item: QuoteItem)
 
 }
 
@@ -162,6 +163,23 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
         appState.quoteState.learnQuotesListener = learnQuotesListener
     }
 
+    func doneLearnQuote(item: QuoteItem) {
+        db.collection("learnQuotes")
+            .whereField("quoteID", isEqualTo: item.rID)
+            .getDocuments(completion: { [appState] snapshot, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    snapshot?.documents.first?.reference.delete()
+
+                    var newLearnQuotes = appState.quoteState.learnQuotesLoadable.value ?? []
+                    newLearnQuotes.removeAll(where: { $0.rID == item.rID })
+                    appState.quoteState.learnQuotesLoadable = .loaded(newLearnQuotes)
+                }
+            })
+
+    }
+
     func addQuote(item: QuoteItem, result: InteractorResult<Void>) {
         do {
             _ = try db.collection("quoteItems").addDocument(from: item)
@@ -188,15 +206,8 @@ struct StubEQuotesInteractor: QuotesInteractor {
     func generateLearnQuotes() {}
     func loadSettings() {}
     func addQuote(item: QuoteItem, result: InteractorResult<Void>) {}
-    func updateQuote(item: QuoteItem, result: (Result<Void, Error>) -> Void) {
-
-    }
-
+    func updateQuote(item: QuoteItem, result: (Result<Void, Error>) -> Void) { }
     func loadLearnQuotes() {}
-    //
-    //    func listenItems(loadable: Binding<Loadable<[QuoteItem]>>, result: InteractorResult<ListenerRegistration>) {
-    //
-    //    }
-
+    func doneLearnQuote(item: QuoteItem) {}
 
 }

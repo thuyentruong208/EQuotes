@@ -46,7 +46,7 @@ struct EQuoteView: View {
                 if learnMode {
                     LearnView()
                 } else {
-                    QuoteListView(quoteItems: quoteState.quotesLoadable.value ?? [])
+                    QuoteListView(quoteItems: quoteState.quotesLoadable.value ?? [], isLearnMode: false)
                 }
 
             }

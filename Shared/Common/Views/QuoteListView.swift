@@ -10,13 +10,22 @@ import SwiftUI
 struct QuoteListView: View {
 
     let quoteItems: [QuoteItem]
+    let isLearnMode: Bool
     @State var editQuoteView: QuoteItem?
     @State var showBackFaceQuoteItems = Set<String>()
+    @Environment(\.injected) private var injected: DIContainer
 
     var body: some View {
         LazyVStack(alignment: .center, spacing: 20) {
             ForEach(quoteItems) { (quoteItem) in
                 itemRow(for: quoteItem)
+                    .gesture(DragGesture(minimumDistance: 10, coordinateSpace: .local)
+                        .onEnded({ value in
+                            if isLearnMode && value.translation.width > 0 {
+                                injected.interactors.quotesInteractor
+                                    .doneLearnQuote(item: quoteItem)
+                            }
+                        }))
             }
         }
         .sheet(item: $editQuoteView, content: { quoteItem in
@@ -27,34 +36,34 @@ struct QuoteListView: View {
     }
 
     func itemRow(for quoteItem: QuoteItem) -> some View {
-        #if os(macOS)
-            return HStack {
+#if os(macOS)
+        return HStack {
 
-                Image(systemName: "pencil.circle.fill")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                    .foregroundColor(colorTheme.accent)
-                    .offset(x: -10, y: -10)
-                    .onTapGesture {
-                        editQuoteView = quoteItem
-                    }
+            Image(systemName: "pencil.circle.fill")
+                .resizable()
+                .frame(width: 25, height: 25)
+                .foregroundColor(colorTheme.accent)
+                .offset(x: -10, y: -10)
+                .onTapGesture {
+                    editQuoteView = quoteItem
+                }
 
-                quoteItemView(quoteItem: quoteItem)
-            }
-        #else
+            quoteItemView(quoteItem: quoteItem)
+        }
+#else
         return quoteItemView(quoteItem: quoteItem)
-        #endif
+#endif
     }
 
     func quoteItemView(quoteItem: QuoteItem) -> some View {
         let front = !showBackFaceQuoteItems.contains(quoteItem.id ?? "")
 
         return ZStack {
-                QuoteItemRow(quoteItem, show: .constant(front))
-                        .frame(maxWidth: 500)
+            QuoteItemRow(quoteItem, show: .constant(front))
+                .frame(maxWidth: 500)
 
-                BackQuoteItemRow(content: quoteItem.ask ?? "", show: .constant(!front))
-                    .frame(maxWidth: 500)
+            BackQuoteItemRow(content: quoteItem.ask ?? "", show: .constant(!front))
+                .frame(maxWidth: 500)
         }
         .onTapGesture {
             flipCard(quoteItem, !front)
