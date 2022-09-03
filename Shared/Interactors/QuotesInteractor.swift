@@ -15,7 +15,7 @@ import SwiftUI
 protocol QuotesInteractor {
 
     func listenItems()
-    func generateLearnQuotes()
+    func generateLearnQuotes(force: Bool)
     func loadSettings()
     func addQuote(item: QuoteItem, result: InteractorResult<Void>)
     func updateQuote(item: QuoteItem, result: InteractorResult<Void>)
@@ -73,13 +73,13 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
         }
     }
 
-    func generateLearnQuotes() {
-
+    func generateLearnQuotes(force: Bool = false) {
         if case let .loaded(toDate) = appState.quoteState.toDateLoadable {
 
             var numberOfNewQuotes = 0
             if let toDate = toDate {
-                let diff = Calendar.current.numberOfDaysBetween(toDate, and: Date())
+                var diff = Calendar.current.numberOfDaysBetween(toDate, and: Date())
+                diff = diff <= 0 ? 0 : diff
                 numberOfNewQuotes = diff * 5
             } else {
                 numberOfNewQuotes = 5
@@ -87,6 +87,13 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
 
             var newQuotes: [QuoteItem] = []
             var setQuotes = Set((appState.quoteState.learnQuotesLoadable.value ?? []).map { $0.rID } )
+
+            var newToDate = Date()
+
+            if force && numberOfNewQuotes == 0 {
+                newToDate = toDate?.addingTimeInterval(24 * 3600) ?? Date()
+                numberOfNewQuotes = 5
+            }
 
             guard numberOfNewQuotes > 0 else {
                 return
@@ -112,7 +119,7 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
                         "createdAt": Date()
                     ],
                     forDocument: learnQuoteRef.document())
-                batch.setData(["value": Date()], forDocument: self.db.collection("userSettings").document("toDate"))
+                batch.setData(["value": newToDate], forDocument: self.db.collection("userSettings").document("toDate"))
             }
 
             batch.commit { [unowned self] error in
@@ -203,7 +210,7 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
 
 struct StubEQuotesInteractor: QuotesInteractor {
     func listenItems() {}
-    func generateLearnQuotes() {}
+    func generateLearnQuotes(force: Bool) {}
     func loadSettings() {}
     func addQuote(item: QuoteItem, result: InteractorResult<Void>) {}
     func updateQuote(item: QuoteItem, result: (Result<Void, Error>) -> Void) { }

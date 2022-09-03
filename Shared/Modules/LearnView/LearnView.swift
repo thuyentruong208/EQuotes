@@ -22,6 +22,13 @@ struct LearnView: View {
 
             Text("Swipe right to done")
 
+            Button {
+                injected.interactors.quotesInteractor.generateLearnQuotes(force: true)
+            } label: {
+                Text("More")
+            }
+
+
             let quoteItems = quoteState.learnQuotesLoadable.value ?? []
             if quoteItems.isEmpty {
                 Text("Hurray!!!")
@@ -37,7 +44,7 @@ struct LearnView: View {
                 .loadLearnQuotes()
         }
         .onChange(of: quoteState.toDateLoadable) { _ in
-            injected.interactors.quotesInteractor.generateLearnQuotes()
+            injected.interactors.quotesInteractor.generateLearnQuotes(force: false)
         }
 
     }
