@@ -10,6 +10,7 @@ import MarkdownUI
 
 struct QuoteItemRow: View {
 
+    @Environment(\.injected) private var injected: DIContainer
     var quoteItem: QuoteItem
     @Binding var show: Bool
     @State var degree: Double = 0
@@ -37,6 +38,18 @@ struct QuoteItemRow: View {
                     .multilineTextAlignment(.center)
             }
         }
+        .overlay(
+            Button {
+                injected.interactors.helpersInteractor.speak(text: quoteItem.en)
+
+            } label: {
+                Image(systemName: "speaker.wave.2.fill")
+                    .tint(Color.yellow)
+                    .foregroundColor(Color.yellow)
+
+            }
+            .offset(y: -10)
+            , alignment: .topTrailing)
         .frame(alignment: .topLeading)
         .padding()
         .background(Color.white.opacity(0.65))

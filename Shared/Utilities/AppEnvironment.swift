@@ -29,6 +29,7 @@ extension AppEnvironment {
 
         let interactors = Interactors(
             quotesInteractor: RealEQuotesInteractor(appState: appState),
+            helpersInteractor: RealHelpersInteractor(),
             eventsInteractor: RealEventsInteractor()
         )
 
