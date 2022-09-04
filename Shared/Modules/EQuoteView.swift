@@ -13,35 +13,22 @@ struct EQuoteView: View {
     @EnvironmentObject var quoteState: QuoteState
     @AppStorage("learnMode") private var learnMode = false
     @State var showAddQuoteView: Bool = false
+    var imageSize: CGFloat {
+        #if os(macOS)
+            return 115
+        #else
+            return 90
+        #endif
+    }
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            colorTheme.background.ignoresSafeArea()
+            GradientView(gradientModel: gradients[1])
+                .ignoresSafeArea()
 
-            ScrollView(.vertical, showsIndicators: true) {
-                HStack {
-                    Image("image")
-                        .resizable()
-                        .frame(width: 120, height: 120)
-
-                    Spacer()
-
-                    HStack {
-                        VStack {
-                            Text("Learn Mode")
-
-                            Toggle("", isOn: $learnMode)
-                                .toggleStyle(SwitchToggleStyle())
-                        }
-
-#if os(macOS)
-                        addButton
-                            .padding(.top, 20)
-#endif
-
-
-                    }
-                }
+            ScrollView(.vertical, showsIndicators: false) {
+                headerView
+                    .padding(.bottom, 20)
 
                 if learnMode {
                     LearnView()
@@ -50,75 +37,73 @@ struct EQuoteView: View {
                 }
 
             }
-
-            .overlay(
-                VStack(alignment: .trailing) {
-
-
-                    //                    Toggle("", isOn: $random)
-                    //                        .foregroundColor(Color.pink)
-                    //                        .toggleStyle(SwitchToggleStyle(tint: Color.pink))
-                    //                        .padding(20)
-                    //#if os(macOS)
-
-                    //#endif
-                }
-
-
-
-                //                Button {
-                //                    Reminder.shared
-                //                        .scheduleReminder(samples: viewModel.items)
-                //
-                //                } label: {
-                //                    Image(systemName: "bell.circle.fill")
-                //                        .frame(width: 64, height: 64)
-                //                }
-                , alignment: .topTrailing
-            )
-
         }
         .ignoresSafeArea(.all, edges: .bottom)
         .onAppear {
             injected.interactors.quotesInteractor.listenItems()
         }
         .onDisappear {
-            //            quotesListener?.remove()
+            quoteState.quotesListener?.remove()
         }
-        //        .onReceive(noticeQuoteItemIDUpdate) {
-        //            self.noticeQuoteItemID = $0
-        //        }
     }
 }
 
 extension EQuoteView {
+
+    var headerView: some View {
+        HStack {
+
+            Image("image")
+                .resizable()
+                .frame(width: imageSize, height: imageSize)
+                .padding(EdgeInsets(top: 20, leading: 30, bottom: 0, trailing: 0))
+
+            Spacer()
+
+            HStack {
+                VStack(alignment: .trailing) {
+                    Toggle("", isOn: $learnMode)
+                        .toggleStyle(SwitchToggleStyle())
+                        .tint(Color.white)
+                        .accentColor(Color.white)
+                        .foregroundColor(Color.white)
+                        .padding(.bottom, 1)
+
+                    Text("Learn Mode")
+                        .textFormatting(.seconddaryText)
+                }
+
+#if os(macOS)
+                addButton
+#endif
+            }
+            .padding()
+        }
+
+    }
 
     var addButton: some View {
         Button(action: {
             showAddQuoteView.toggle()
 
         }, label: {
-            Label("Add", systemImage: "plus.message.fill")
+            VStack(spacing: 7) {
+                Image(systemName: "plus.message.fill")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                Text("Add")
+                    .textFormatting(.seconddaryText)
+            }
         })
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-
         .buttonStyle(.borderless)
         .tint(.pink)
         .foregroundColor(.white)
         .cornerRadius(40)
-        .background(Color("Color1"))
-        //            .padding()
-        //            .buttonStyle(BlueButtonStyle())
         .sheet(isPresented: $showAddQuoteView) {
             AddNewQuoteView()
         }
     }
-
-}
-
-extension EQuoteView {
-
-
 }
 
 struct EQuoteView_Previews: PreviewProvider {

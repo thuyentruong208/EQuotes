@@ -26,9 +26,9 @@ struct AddNewQuoteView: View {
                 HStack {
                     QuoteItemRow(newQuoteContent.toQuoteItem(),
                                  show: .constant(true))
-                        .border(Color.gray, width: 1)
-                        .cornerRadius(10)
-                        .frame(minWidth: 0, maxWidth: .infinity)
+                    .border(Color.gray, width: 1)
+                    .cornerRadius(10)
+                    .frame(minWidth: 0, maxWidth: .infinity)
 
 
                     Spacer(minLength: 30)
@@ -39,51 +39,15 @@ struct AddNewQuoteView: View {
                         .frame(minWidth: 0, maxWidth: .infinity)
                 }
 
-                Text("Content")
-                    .font(.headline)
-
                 HStack {
-                    TextEditor(text: $newQuoteContent.content)
-                        .textFormatting(.textField)
-                        .padding()
-                        .border(colorTheme.primary, width: 1)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .frame(height: 180)
-
+                    textField($newQuoteContent.content)
                     Spacer(minLength: 30)
-
-                    TextEditor(text: $newQuoteContent.askContent)
-                        .textFormatting(.textField)
-                        .padding()
-                        .border(colorTheme.primary, width: 1)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .frame(height: 180)
+                    textField($newQuoteContent.askContent)
                 }
-
-//                TextEditor(text: $newQuoteContent.content)
-//                    .textFormatting(.textField)
-//                    .padding()
-//                    .border(colorTheme.primary, width: 1)
-//                    .frame(height: 180)
-//                #if os(macOS)
-//                    .onExitCommand {
-////                        submitNewQuote()
-//                        //                        presentationMode.wrappedValue.dismiss()
-//                    }
-//                    .focusable()
-//                    .onMoveCommand { direction in
-////                        switch direction {
-////                        case .right, .down:
-//////                            submitNewQuote()
-////                        default:
-////                            break
-////                        }
-//                    }
-//                #endif
 
                 Divider()
                     .frame(height: 3)
-                    .background(Color.orange)
+                    .background( Color(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)))
                     .padding(.top, 30)
 
                 HStack(spacing: 30) {
@@ -106,7 +70,7 @@ struct AddNewQuoteView: View {
                             .bold()
                             .foregroundColor(Color.red)
                     }
-                    .buttonStyle(GrowingButton())
+                    .buttonStyle(RoundedRectangleButtonStyle(backgroundColor: Color.white))
 
                     Button {
                         submitNewQuote()
@@ -114,7 +78,7 @@ struct AddNewQuoteView: View {
                     } label: {
                         Text("SUBMIT")
                     }
-                    .buttonStyle(GrowingButton())
+                    .buttonStyle(RoundedRectangleButtonStyle(backgroundColor: Color.white))
                 }
                 .padding(.top, 20)
 
@@ -124,6 +88,27 @@ struct AddNewQuoteView: View {
         .frame(width: 700)
 
     }
+}
+
+extension AddNewQuoteView {
+
+    func textField(_ content: Binding<String>) -> some View {
+        TextEditor(text: content)
+            .textFormatting(.textField)
+            .padding()
+            .border(colorTheme.primary, width: 1)
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .frame(height: 180)
+#if os(macOS)
+            .modifier(ShortcutAddViewModifier(onExitCommand: {
+                presentationMode.wrappedValue.dismiss()
+
+            }, onRightDownCommand: {
+                submitNewQuote()
+            }))
+#endif
+    }
+
 }
 
 extension AddNewQuoteView {
@@ -166,5 +151,27 @@ extension AddNewQuoteView {
 struct AddNewQuote_Previews: PreviewProvider {
     static var previews: some View {
         AddNewQuoteView()
+    }
+}
+
+struct ShortcutAddViewModifier: ViewModifier {
+    let onExitCommand: () -> ()
+    let onRightDownCommand: () -> ()
+
+    func body(content: Content) -> some View {
+        content
+            .onExitCommand {
+                onExitCommand()
+            }
+            .focusable()
+            .onMoveCommand { direction in
+                print(direction)
+                switch direction {
+                case .right, .down:
+                    onRightDownCommand()
+                default:
+                    break
+                }
+            }
     }
 }

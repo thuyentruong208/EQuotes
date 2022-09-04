@@ -31,7 +31,10 @@ struct BackQuoteItemRow: View {
 
         })
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
-        .frame(maxHeight: show ? 400 : 0)
+        .frame(maxWidth: show ? .infinity : 0)
+        .onAppear {
+            degree = show ? 0 : -90
+        }
     }
 }
 

@@ -13,7 +13,9 @@ enum FontStyle {
     case header
     case textField
     case primaryText
+    case primaryTextWith(Color)
     case seconddaryText
+    case secondaryTextWith(Color)
 }
 
 struct TextViewModifier: ViewModifier {
@@ -48,6 +50,9 @@ extension View {
                     backgroundColor: colorTheme.textFieldBackground))
 
         case .primaryText:
+            return textFormatting(.primaryTextWith( colorTheme.boxTextColor))
+
+        case let .primaryTextWith(color):
             var size: CGFloat = 18
 
             #if os(macOS)
@@ -57,14 +62,17 @@ extension View {
             return modifier(
                 TextViewModifier(
                     font: .custom("Avenir Next Condensed", size: size),
-                    foregroundColor: colorTheme.boxTextColor,
+                    foregroundColor: color,
                     backgroundColor: Color.clear))
 
         case .seconddaryText:
+            return textFormatting(.secondaryTextWith( colorTheme.boxTextColor))
+
+        case let .secondaryTextWith(color):
             return modifier(
                 TextViewModifier(
                     font: .callout,
-                    foregroundColor: colorTheme.boxTextColor,
+                    foregroundColor: color,
                     backgroundColor: Color.clear))
 
 

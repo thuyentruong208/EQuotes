@@ -16,42 +16,76 @@ struct QuoteListView: View {
     @Environment(\.injected) private var injected: DIContainer
 
     var body: some View {
-        LazyVStack(alignment: .center, spacing: 20) {
-            ForEach(quoteItems) { (quoteItem) in
-                itemRow(for: quoteItem)
-                    .gesture(DragGesture(minimumDistance: 10, coordinateSpace: .local)
-                        .onEnded({ value in
-                            if isLearnMode && value.translation.width > 0 {
-                                injected.interactors.quotesInteractor
-                                    .doneLearnQuote(item: quoteItem)
-                            }
-                        }))
+        VStack {
+            if isLearnMode {
+                Text("Swipe right to done")
+                    .textFormatting(.secondaryTextWith(Color.white.opacity(0.6)))
+                    .foregroundColor(Color.white)
+            }
+
+            LazyVStack(alignment: .center, spacing: 20) {
+                ForEach(quoteItems) { (quoteItem) in
+                    itemRow(for: quoteItem)
+                        .gesture(DragGesture(minimumDistance: 10, coordinateSpace: .local)
+                            .onEnded({ value in
+                                if isLearnMode && value.translation.width > 0 {
+                                    injected.interactors.quotesInteractor
+                                        .doneLearnQuote(item: quoteItem)
+                                }
+                            }))
+                }
+            }
+            .sheet(item: $editQuoteView, content: { quoteItem in
+                AddNewQuoteView(quoteItem: quoteItem)
+            })
+            .padding(.horizontal, 15)
+            .onAppear {
+                if isLearnMode {
+                    showBackFaceQuoteItems = Set(quoteItems.map(\.rID))
+                }
             }
         }
-        .sheet(item: $editQuoteView, content: { quoteItem in
-            AddNewQuoteView(quoteItem: quoteItem)
-        })
-        .padding()
-
     }
 
     func itemRow(for quoteItem: QuoteItem) -> some View {
 #if os(macOS)
         return HStack {
 
-            Image(systemName: "pencil.circle.fill")
-                .resizable()
-                .frame(width: 25, height: 25)
-                .foregroundColor(colorTheme.accent)
-                .offset(x: -10, y: -10)
-                .onTapGesture {
-                    editQuoteView = quoteItem
-                }
-
             quoteItemView(quoteItem: quoteItem)
+
+            VStack(alignment: .center) {
+                Image(systemName: "pencil.tip.crop.circle.badge.arrow.forward")
+                    .resizable()
+                    .frame(width: 22, height: 20)
+                    .foregroundColor(colorTheme.accent)
+                    .onTapGesture {
+                        editQuoteView = quoteItem
+                    }
+                    .padding(.bottom, 13)
+
+                Image(systemName: "speaker.wave.2.fill")
+                    .resizable()
+                    .frame(width: 18, height: 18)
+                    .foregroundColor(colorTheme.accent)
+                    .onTapGesture {
+                        injected.interactors.helpersInteractor.speak(text: quoteItem.en)
+                    }
+            }
+            .padding(8)
         }
 #else
         return quoteItemView(quoteItem: quoteItem)
+            .overlay(
+                Image(systemName: "speaker.wave.2.fill")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+                    .foregroundColor(Color.black)
+                    .offset(x: -13, y: -20)
+                    .onTapGesture {
+                        injected.interactors.helpersInteractor.speak(text: quoteItem.en)
+                    }
+                , alignment: .bottomTrailing
+            )
 #endif
     }
 

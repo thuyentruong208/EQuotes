@@ -13,32 +13,34 @@ struct LearnView: View {
 
 
     var body: some View {
-
         VStack {
             if let toDate = quoteState.toDateLoadable.value {
                 Text(toDate?.formatted() ?? "")
-                    .textFormatting(.primaryText)
+                    .textFormatting(.primaryTextWith(Color.white))
             }
-
-            Text("Swipe right to done")
-
-            Button {
-                injected.interactors.quotesInteractor.generateLearnQuotes(force: true)
-            } label: {
-                Text("More")
-            }
-
 
             let quoteItems = quoteState.learnQuotesLoadable.value ?? []
             if quoteItems.isEmpty {
-                Text("Hurray!!!")
+                VStack {
+                    Image("victory")
+                        .resizable()
+
+                    Button {
+                        injected.interactors.quotesInteractor.generateLearnQuotes(force: true)
+                    } label: {
+                        Text("More")
+                    }
+                    .frame(width: 150, height: 30)
+                    .buttonStyle(RoundedRectangleButtonStyle())
+                }
+                .padding(50)
+
             } else {
                 QuoteListView(quoteItems: quoteItems, isLearnMode: true)
             }
 
         }
         .onAppear {
-            print("Come here")
             injected.interactors.quotesInteractor.loadSettings()
             injected.interactors.quotesInteractor
                 .loadLearnQuotes()
@@ -46,6 +48,7 @@ struct LearnView: View {
         .onChange(of: quoteState.toDateLoadable) { _ in
             injected.interactors.quotesInteractor.generateLearnQuotes(force: false)
         }
+        .offset(y: -60)
 
     }
 }

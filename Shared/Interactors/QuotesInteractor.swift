@@ -34,8 +34,8 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
     }
 
     func listenItems() {
-        let quotesListener = db.collection("quoteItems")
-            .order(by: "createdAt", descending: true)
+        let quotesListener = db.collection(DB.quoteItems)
+            .order(by: DB.Fields.createdAt, descending: true)
             .addSnapshotListener { [self] (snapshot, _) in
                 guard let snapshot = snapshot else { return }
 
@@ -50,15 +50,15 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
     }
 
     func loadSettings() {
-        let docRef = db.collection("userSettings")
-            .document("toDate")
+        let docRef = db.collection(DB.userSettings)
+            .document(DB.KeyID.toDate)
 
         appState.quoteState.toDateDataListener = docRef.addSnapshotListener { [weak self] (snapshot, error) in
             guard let self = self, let snapshot = snapshot else { return }
 
             do {
                 let data = try snapshot.data(as: [String: Date].self)
-                self.appState.quoteState.toDateLoadable =  .loaded(data["value"])
+                self.appState.quoteState.toDateLoadable =  .loaded(data[DB.Fields.value])
 
             } catch (let exception) {
                 if let exception = exception as? DecodingError {
@@ -111,15 +111,15 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
             }
 
             let batch = db.batch();
-            let learnQuoteRef = db.collection("learnQuotes")
+            let learnQuoteRef = db.collection(DB.learnQuotes)
             newQuotes.forEach { quote in
                 batch.setData(
                     [
-                        "quoteID": quote.rID,
-                        "createdAt": Date()
+                        DB.Fields.quoteID: quote.rID,
+                        DB.Fields.createdAt: Date()
                     ],
                     forDocument: learnQuoteRef.document())
-                batch.setData(["value": newToDate], forDocument: self.db.collection("userSettings").document("toDate"))
+                batch.setData([DB.Fields.value: newToDate], forDocument: self.db.collection(DB.userSettings).document(DB.KeyID.toDate))
             }
 
             batch.commit { [unowned self] error in
@@ -134,13 +134,13 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
     }
 
     func loadLearnQuotes() {
-        let learnQuotesListener = db.collection("learnQuotes")
-            .order(by: "createdAt", descending: true)
+        let learnQuotesListener = db.collection(DB.learnQuotes)
+            .order(by: DB.Fields.createdAt, descending: true)
             .addSnapshotListener { [self] (snapshot, _) in
                 guard let documents = snapshot?.documents else { return }
 
                 let learnQuoteIDs = documents.compactMap { (element) -> String? in
-                    guard let quoteID = element["quoteID"] as? String else {
+                    guard let quoteID = element[DB.Fields.quoteID] as? String else {
                         return nil
                     }
 
@@ -152,7 +152,7 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
 
                 } else {
 
-                    db.collection("quoteItems")
+                    db.collection(DB.quoteItems)
                         .whereField(FieldPath.documentID(), in: learnQuoteIDs)
                         .addSnapshotListener { [self] (snapshot, _) in
                             guard let snapshot = snapshot else { return }
@@ -171,8 +171,8 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
     }
 
     func doneLearnQuote(item: QuoteItem) {
-        db.collection("learnQuotes")
-            .whereField("quoteID", isEqualTo: item.rID)
+        db.collection(DB.learnQuotes)
+            .whereField(DB.Fields.quoteID, isEqualTo: item.rID)
             .getDocuments(completion: { [appState] snapshot, error in
                 if let error = error {
                     print(error)
@@ -189,7 +189,7 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
 
     func addQuote(item: QuoteItem, result: InteractorResult<Void>) {
         do {
-            _ = try db.collection("quoteItems").addDocument(from: item)
+            _ = try db.collection(DB.quoteItems).addDocument(from: item)
             result(.success(()))
         } catch {
             result(.failure(error))
@@ -200,7 +200,7 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
         guard let id = item.id else { return }
 
         do {
-            try db.collection("quoteItems").document(id).setData(from: item)
+            try db.collection(DB.quoteItems).document(id).setData(from: item)
             result(.success(()))
         } catch {
             result(.failure(error))

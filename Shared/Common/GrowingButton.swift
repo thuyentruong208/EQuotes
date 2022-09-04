@@ -7,20 +7,23 @@
 
 import SwiftUI
 
-struct GrowingButton: ButtonStyle {
+struct RoundedRectangleButtonStyle: ButtonStyle {
+    let color: Color
+    let backgroundColor: Color
+
+    init(color: Color = Color.black, backgroundColor: Color = Color.yellow) {
+        self.color = color
+        self.backgroundColor = backgroundColor
+    }
+
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding()
-            .background(Color(red: 0, green: 0, blue: 0.5))
-            .foregroundColor(.white)
-            .clipShape(Capsule())
-//            .scaleEffect(configuration.isPressed ? 1.2 : 1)
-//            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+        HStack {
+            Spacer()
+            configuration.label.foregroundColor(color)
+            Spacer()
+        }
+        .padding(8)
+        .background(backgroundColor.cornerRadius(8))
+        .scaleEffect(configuration.isPressed ? 0.95 : 1)
     }
 }
-
-//struct GrowingButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GrowingButton()
-//    }
-//}
