@@ -15,6 +15,15 @@ struct QuoteListView: View {
     @State var showBackFaceQuoteItems = Set<String>()
     @Environment(\.injected) private var injected: DIContainer
 
+    init(quoteItems: [QuoteItem], isLearnMode: Bool) {
+        self.quoteItems = quoteItems
+        self.isLearnMode = isLearnMode
+
+        if isLearnMode {
+            _showBackFaceQuoteItems = State(initialValue: Set(quoteItems.map(\.rID))) 
+        }
+    }
+
     var body: some View {
         VStack {
             if isLearnMode {
@@ -39,11 +48,6 @@ struct QuoteListView: View {
                 AddNewQuoteView(quoteItem: quoteItem)
             })
             .padding(.horizontal, 15)
-            .onAppear {
-                if isLearnMode {
-                    showBackFaceQuoteItems = Set(quoteItems.map(\.rID))
-                }
-            }
         }
     }
 
@@ -90,13 +94,13 @@ struct QuoteListView: View {
     }
 
     func quoteItemView(quoteItem: QuoteItem) -> some View {
-        let front = !showBackFaceQuoteItems.contains(quoteItem.id ?? "")
+        let front = !showBackFaceQuoteItems.contains(quoteItem.rID)
 
         return ZStack {
             QuoteItemRow(quoteItem, show: .constant(front))
                 .frame(maxWidth: 500)
 
-            BackQuoteItemRow(content: quoteItem.ask ?? "", show: .constant(!front))
+            BackQuoteItemRow(quoteItem: quoteItem, show: .constant(!front))
                 .frame(maxWidth: 500)
         }
         .onTapGesture {

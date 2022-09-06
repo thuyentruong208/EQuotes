@@ -59,8 +59,6 @@
 		7650243628BE3AD8000F3627 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650243428BE3AD8000F3627 /* LearnView.swift */; };
 		7650243828BEFC83000F3627 /* BackQuoteItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650243728BEFC83000F3627 /* BackQuoteItemRow.swift */; };
 		7650243928BEFC83000F3627 /* BackQuoteItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650243728BEFC83000F3627 /* BackQuoteItemRow.swift */; };
-		7650243C28BF1495000F3627 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7650243B28BF1495000F3627 /* MarkdownUI */; };
-		7650243E28BF1506000F3627 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7650243D28BF1506000F3627 /* MarkdownUI */; };
 		7650244028BF1B6D000F3627 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650243F28BF1B6D000F3627 /* Result+Extensions.swift */; };
 		7650244128BF1B6D000F3627 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650243F28BF1B6D000F3627 /* Result+Extensions.swift */; };
 		7650244328BF1BA5000F3627 /* EventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650244228BF1BA5000F3627 /* EventsInteractor.swift */; };
@@ -139,7 +137,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2628F23C0D9A79106014EB3 /* Pods_EQuotes__iOS_.framework in Frameworks */,
-				7650243C28BF1495000F3627 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B917CDCFC3A0BC2C84E22122 /* Pods_EQuotes__macOS_.framework in Frameworks */,
-				7650243E28BF1506000F3627 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +333,6 @@
 			);
 			name = "EQuotes (iOS)";
 			packageProductDependencies = (
-				7650243B28BF1495000F3627 /* MarkdownUI */,
 			);
 			productName = "EQuotes (iOS)";
 			productReference = 765023D628BCE5EC000F3627 /* EQuotes.app */;
@@ -359,7 +354,6 @@
 			);
 			name = "EQuotes (macOS)";
 			packageProductDependencies = (
-				7650243D28BF1506000F3627 /* MarkdownUI */,
 			);
 			productName = "EQuotes (macOS)";
 			productReference = 765023DC28BCE5EC000F3627 /* EQuotes.app */;
@@ -393,7 +387,6 @@
 			);
 			mainGroup = 765023C928BCE5EB000F3627;
 			packageReferences = (
-				7650243A28BF1495000F3627 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
 			);
 			productRefGroup = 765023D728BCE5EC000F3627 /* Products */;
 			projectDirPath = "";
@@ -854,30 +847,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		7650243A28BF1495000F3627 /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		7650243B28BF1495000F3627 /* MarkdownUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7650243A28BF1495000F3627 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
-			productName = MarkdownUI;
-		};
-		7650243D28BF1506000F3627 /* MarkdownUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7650243A28BF1495000F3627 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
-			productName = MarkdownUI;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 765023CA28BCE5EB000F3627 /* Project object */;
 }

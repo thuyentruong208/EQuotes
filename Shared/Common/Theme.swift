@@ -14,7 +14,7 @@ enum FontStyle {
     case textField
     case primaryText
     case primaryTextWith(Color)
-    case seconddaryText
+    case secondaryText
     case secondaryTextWith(Color)
 }
 
@@ -65,7 +65,7 @@ extension View {
                     foregroundColor: color,
                     backgroundColor: Color.clear))
 
-        case .seconddaryText:
+        case .secondaryText:
             return textFormatting(.secondaryTextWith( colorTheme.boxTextColor))
 
         case let .secondaryTextWith(color):

@@ -12,12 +12,14 @@ class NewQuoteContent: ObservableObject {
     var id: String?
     @Published var content: String = ""
     @Published var askContent: String = ""
+    @Published var askImages: String = ""
 
     convenience init(quoteItem: QuoteItem?) {
         self.init()
         self.id = quoteItem?.id
         self.content = quoteItem == nil ? "" : "\(quoteItem?.en ?? "")||\(quoteItem?.vi ?? "")"
         self.askContent = quoteItem?.ask ?? ""
+        self.askImages = quoteItem?.images ?? ""
     }
 
     func toQuoteItem() -> QuoteItem {
@@ -34,7 +36,8 @@ class NewQuoteContent: ObservableObject {
             id: id,
             en: en,
             vi: vi,
-            ask: askContent
+            ask: askContent,
+            images: askImages
         )
     }
 
@@ -42,5 +45,6 @@ class NewQuoteContent: ObservableObject {
         id = nil
         content = ""
         askContent = ""
+        askImages = ""
     }
 }

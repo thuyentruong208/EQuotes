@@ -70,7 +70,7 @@ extension EQuoteView {
                         .padding(.bottom, 1)
 
                     Text("Learn Mode")
-                        .textFormatting(.seconddaryText)
+                        .textFormatting(.secondaryText)
                 }
 
 #if os(macOS)
@@ -92,7 +92,7 @@ extension EQuoteView {
                     .resizable()
                     .frame(width: 25, height: 25)
                 Text("Add")
-                    .textFormatting(.seconddaryText)
+                    .textFormatting(.secondaryText)
             }
         })
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))

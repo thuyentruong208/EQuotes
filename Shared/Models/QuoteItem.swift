@@ -14,6 +14,7 @@ struct QuoteItem: Codable, Identifiable {
     var en: String
     var vi: String?
     var ask: String?
+    var images: String?
     @ServerTimestamp var createdAt: Timestamp?
 
     var rID: String {

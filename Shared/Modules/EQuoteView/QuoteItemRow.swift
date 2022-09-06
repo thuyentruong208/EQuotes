@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import MarkdownUI
 
 struct QuoteItemRow: View {
 
@@ -31,7 +30,7 @@ struct QuoteItemRow: View {
                     .background(Color.black)
 
                 Text(viText.markdownToAttributed())
-                    .textFormatting(.seconddaryText)
+                    .textFormatting(.secondaryText)
                     .padding(.vertical, 5)
                     .foregroundColor(Color.black)
                     .multilineTextAlignment(.center)
@@ -48,7 +47,10 @@ struct QuoteItemRow: View {
 
         })
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
-
+        .frame(maxWidth: show ? .infinity : 0, maxHeight: show ? .infinity : 0)
+        .onAppear {
+            degree = show ? 0 : 90
+        }
     }
 }
 

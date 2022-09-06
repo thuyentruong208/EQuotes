@@ -33,7 +33,7 @@ struct AddNewQuoteView: View {
 
                     Spacer(minLength: 30)
 
-                    BackQuoteItemRow(content: newQuoteContent.toQuoteItem().ask ?? "", show: .constant(true))
+                    BackQuoteItemRow(quoteItem: newQuoteContent.toQuoteItem(), show: .constant(true))
                         .border(Color.gray, width: 1)
                         .cornerRadius(10)
                         .frame(minWidth: 0, maxWidth: .infinity)
@@ -42,7 +42,11 @@ struct AddNewQuoteView: View {
                 HStack {
                     textField($newQuoteContent.content)
                     Spacer(minLength: 30)
-                    textField($newQuoteContent.askContent)
+
+                    VStack {
+                        textField($newQuoteContent.askContent)
+                        textField($newQuoteContent.askImages)
+                    }
                 }
 
                 Divider()

@@ -6,20 +6,45 @@
 //
 
 import SwiftUI
-import MarkdownUI
 
 struct BackQuoteItemRow: View {
 
-    var content: String
+    var quoteItem: QuoteItem
     @Binding var show: Bool
     @State var degree: Double = -90
 
     var body: some View {
         ZStack {
             VStack {
-                Markdown(content)
-                    .disabled(true)
+                if let askContent = quoteItem.ask, !askContent.isEmpty {
+                    Text(askContent)
+                        .textFormatting(.secondaryText)
+                }
+
+                let images = quoteItem.images?.split(separator: ",").map(String.init) ?? []
+
+                LazyHStack {
+                    ForEach(images, id: \.self) { (image) in
+                        AsyncImage(url: URL(string: image)) { (phrase) in
+                            switch phrase {
+                            case .empty:
+                                ProgressView()
+
+                            case .success(let image):
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 250, maxHeight: 250)
+                            default:
+                                Rectangle()
+                                    .frame(width: 100, height: 100)
+                                    .background(Color.gray)
+                            }
+
+                        }
+                    }
+                }
             }
+            .disabled(true)
             .padding()
             .background(Color.white.opacity(0.65))
             .cornerRadius(20)
@@ -31,7 +56,7 @@ struct BackQuoteItemRow: View {
 
         })
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
-        .frame(maxWidth: show ? .infinity : 0)
+        .frame(maxWidth: show ? .infinity : 0, maxHeight: show ? .infinity : 0)
         .onAppear {
             degree = show ? 0 : -90
         }
@@ -40,7 +65,11 @@ struct BackQuoteItemRow: View {
 
 struct BackQuoteItemRow_Previews: PreviewProvider {
     static var previews: some View {
-        BackQuoteItemRow(content: "* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text.",
+        BackQuoteItemRow(quoteItem: QuoteItem(
+            en: "* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text.",
+            vi: "Sme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to saySme thing to say",
+            ask: ""
+        ),
                          show: .constant(true))
     }
 }
