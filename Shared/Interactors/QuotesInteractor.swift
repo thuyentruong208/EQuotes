@@ -5,9 +5,7 @@
 //  Created by Thuyên Trương on 30/08/2022.
 //
 
-import Foundation
-
-import Foundation
+import Combine
 import Firebase
 import FirebaseFirestore
 import SwiftUI
@@ -17,8 +15,8 @@ protocol QuotesInteractor {
     func listenItems()
     func generateLearnQuotes(force: Bool)
     func loadSettings()
-    func addQuote(item: QuoteItem, result: InteractorResult<Void>)
-    func updateQuote(item: QuoteItem, result: InteractorResult<Void>)
+    func addQuote(item: QuoteItem, result: @escaping InteractorResult<Void>)
+    func updateQuote(item: QuoteItem, result: @escaping InteractorResult<Void>)
     func loadLearnQuotes()
     func doneLearnQuote(item: QuoteItem)
 
@@ -26,51 +24,74 @@ protocol QuotesInteractor {
 
 class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
 
-    fileprivate let db = Firestore.firestore()
+    fileprivate let dbManager: DatabaseManager
     fileprivate let appState: AppState
+    fileprivate var cancelBag = Set<AnyCancellable>()
 
-    init(appState: AppState) {
+    init(dbManager: DatabaseManager,
+         appState: AppState) {
+        self.dbManager = dbManager
         self.appState = appState
     }
 
     func listenItems() {
-        let quotesListener = db.collection(DB.quoteItems)
-            .order(by: DB.Fields.createdAt, descending: true)
-            .addSnapshotListener { [self] (snapshot, _) in
-                guard let snapshot = snapshot else { return }
-
-                let items = snapshot.documents.compactMap { (document) -> QuoteItem? in
-                    try? document.data(as: QuoteItem.self)
-                }
-
-                self.appState.quoteState.quotesLoadable = .loaded(items)
+        dbManager.observeList(
+            QuoteItem.self,
+            in: DB.quoteItems,
+            order: (by: DB.Fields.createdAt, descending: true)
+        )
+        .sink(receiveCompletion: { (completion) in
+            switch completion {
+            case .finished:
+                print("DONE")
+            case .failure(let error):
+                print("Error: \(error)")
             }
 
-        appState.quoteState.quotesListener = quotesListener
+        }, receiveValue: { [weak appState] items in
+            guard let appState = appState else {
+                return
+            }
+            appState.quoteState.quotesLoadable = .loaded(items)
+        })
+        .store(in: &cancelBag)
     }
 
     func loadSettings() {
-        let docRef = db.collection(DB.userSettings)
-            .document(DB.KeyID.toDate)
+        dbManager.observeItem(
+            [String: Date].self,
+            in: DB.userSettings,
+            key: DB.KeyID.toDate
+        )
+        .sink(receiveCompletion: { [weak appState] (completion) in
+            guard let appState = appState else {
+                return
+            }
 
-        appState.quoteState.toDateDataListener = docRef.addSnapshotListener { [weak self] (snapshot, error) in
-            guard let self = self, let snapshot = snapshot else { return }
-
-            do {
-                let data = try snapshot.data(as: [String: Date].self)
-                self.appState.quoteState.toDateLoadable =  .loaded(data[DB.Fields.value])
-
-            } catch (let exception) {
-                if let exception = exception as? DecodingError {
-                    if case .valueNotFound = exception {
-                        self.appState.quoteState.toDateLoadable = .loaded(nil)
+            switch completion {
+            case .finished:
+                print("DONE")
+            case .failure(let error):
+                if let error = error as? DecodingError {
+                    if case .valueNotFound = error {
+                        appState.quoteState.toDateLoadable = .loaded(nil)
                         return
                     }
                 }
 
-                self.appState.quoteState.toDateLoadable.setFailed(error: exception)
+                appState.quoteState.toDateLoadable.setFailed(error: error)
             }
-        }
+
+        }, receiveValue: { [weak appState] (data) in
+            guard let appState = appState else {
+                return
+            }
+
+            let value = data[DB.Fields.value]
+            appState.quoteState.toDateLoadable = .loaded(value)
+
+        })
+        .store(in: &cancelBag)
     }
 
     func generateLearnQuotes(force: Bool = false) {
@@ -110,101 +131,103 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
                 }
             }
 
-            let batch = db.batch();
-            let learnQuoteRef = db.collection(DB.learnQuotes)
-            newQuotes.forEach { quote in
-                batch.setData(
-                    [
-                        DB.Fields.quoteID: quote.rID,
-                        DB.Fields.createdAt: Date()
-                    ],
-                    forDocument: learnQuoteRef.document())
-                batch.setData([DB.Fields.value: newToDate], forDocument: self.db.collection(DB.userSettings).document(DB.KeyID.toDate))
+            let storedNewQuotes = newQuotes.map {
+                [
+                    DB.Fields.quoteID: $0.rID,
+                    DB.Fields.createdAt: Date()
+                ]
             }
 
-            batch.commit { [unowned self] error in
-                if let error = error {
-                    print(error)
-                } else {
-                    self.appState.quoteState.toDateLoadable = .loaded(Date())
+
+            dbManager.create([
+                (
+                    items: storedNewQuotes,
+                    collectionPath: DB.learnQuotes,
+                    documentKey: nil
+                ),
+                (
+                    items: [[DB.Fields.value: newToDate]],
+                    collectionPath: DB.userSettings,
+                    documentKey: DB.KeyID.toDate
+                )
+            ])
+            .sink(receiveCompletion: { [weak appState] (completion) in
+                guard let appState = appState else {
+                    return
                 }
-            }
 
+                switch (completion) {
+                case .finished:
+                    appState.quoteState.toDateLoadable = .loaded(newToDate)
+                case let .failure(error):
+                    print("Error: \(error)")
+                }
+
+            }, receiveValue: { _ in })
+            .store(in: &cancelBag)
         }
     }
 
     func loadLearnQuotes() {
-        let learnQuotesListener = db.collection(DB.learnQuotes)
-            .order(by: DB.Fields.createdAt, descending: true)
-            .addSnapshotListener { [self] (snapshot, _) in
-                guard let documents = snapshot?.documents else { return }
-
-                let learnQuoteIDs = documents.compactMap { (element) -> String? in
-                    guard let quoteID = element[DB.Fields.quoteID] as? String else {
-                        return nil
-                    }
-
-                    return quoteID
-                }
-
-                if learnQuoteIDs.isEmpty {
-                    self.appState.quoteState.learnQuotesLoadable = .loaded([])
-
-                } else {
-
-                    db.collection(DB.quoteItems)
-                        .whereField(FieldPath.documentID(), in: learnQuoteIDs)
-                        .addSnapshotListener { [self] (snapshot, _) in
-                            guard let snapshot = snapshot else { return }
-
-                            let items = snapshot.documents.compactMap { (document) -> QuoteItem? in
-                                try? document.data(as: QuoteItem.self)
-                            }
-
-                            self.appState.quoteState.learnQuotesLoadable = .loaded(items)
-                        }
-                }
-
+        dbManager.observeList(
+            LearnQuote.self,
+            in: DB.learnQuotes,
+            order: (by: DB.Fields.createdAt, descending: true)
+        )
+        .map { (items) in
+            items.compactMap { $0.quoteID }
+        }
+        .flatMap { [dbManager] (itemIDs) -> AnyPublisher<[QuoteItem], Error> in
+            if itemIDs.isEmpty {
+                return Just([])
+                    .setFailureType(to: Error.self)
+                    .eraseToAnyPublisher()
+            } else {
+                return dbManager.observeList(QuoteItem.self, keys: itemIDs, in: DB.quoteItems)
             }
 
-        appState.quoteState.learnQuotesListener = learnQuotesListener
+        }
+        .sink(receiveCompletion: { (completion) in
+            switch (completion) {
+            case .failure(let error):
+                print("Error: \(error)")
+            case .finished:
+                print("DONE")
+            }
+
+        }, receiveValue: { [unowned appState] (items) in
+            appState.quoteState.learnQuotesLoadable = .loaded(items)
+        })
+        .store(in: &cancelBag)
     }
 
     func doneLearnQuote(item: QuoteItem) {
-        db.collection(DB.learnQuotes)
-            .whereField(DB.Fields.quoteID, isEqualTo: item.rID)
-            .getDocuments(completion: { [appState] snapshot, error in
-                if let error = error {
-                    print(error)
-                } else {
-                    snapshot?.documents.first?.reference.delete()
-
-                    var newLearnQuotes = appState.quoteState.learnQuotesLoadable.value ?? []
-                    newLearnQuotes.removeAll(where: { $0.rID == item.rID })
-                    appState.quoteState.learnQuotesLoadable = .loaded(newLearnQuotes)
+        dbManager.delete(DB.Fields.quoteID, isEqualTo: item.rID, in: DB.learnQuotes)
+            .sink(receiveCompletion: { (completion) in
+                switch (completion) {
+                case .failure(let error):
+                    print("Error: \(error)")
+                case .finished:
+                    print("DONE")
                 }
-            })
+
+            }, receiveValue: { _ in })
+            .store(in: &cancelBag)
 
     }
 
-    func addQuote(item: QuoteItem, result: InteractorResult<Void>) {
-        do {
-            _ = try db.collection(DB.quoteItems).addDocument(from: item)
-            result(.success(()))
-        } catch {
-            result(.failure(error))
-        }
+    func addQuote(item: QuoteItem, result: @escaping InteractorResult<Void>) {
+        dbManager.create(item, in: DB.quoteItems)
+            .sinkToResult(result)
+            .store(in: &cancelBag)
     }
 
-    func updateQuote(item: QuoteItem, result: (Result<Void, Error>) -> Void) {
+    func updateQuote(item: QuoteItem, result: @escaping (Result<Void, Error>) -> Void) {
         guard let id = item.id else { return }
 
-        do {
-            try db.collection(DB.quoteItems).document(id).setData(from: item)
-            result(.success(()))
-        } catch {
-            result(.failure(error))
-        }
+        dbManager.update(key: id, item, in: DB.quoteItems)
+            .sinkToResult(result)
+            .store(in: &cancelBag)
     }
 }
 

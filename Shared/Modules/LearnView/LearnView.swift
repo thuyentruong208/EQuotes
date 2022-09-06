@@ -19,24 +19,29 @@ struct LearnView: View {
                     .textFormatting(.primaryTextWith(Color.white))
             }
 
-            let quoteItems = quoteState.learnQuotesLoadable.value ?? []
-            if quoteItems.isEmpty {
-                VStack {
-                    Image("victory")
-                        .resizable()
+            switch quoteState.learnQuotesLoadable {
+            case .notRequested:
+                ProgressView()
+            default:
+                let quoteItems = quoteState.learnQuotesLoadable.value ?? []
+                if quoteItems.isEmpty {
+                    VStack {
+                        Image("victory")
+                            .resizable()
 
-                    Button {
-                        injected.interactors.quotesInteractor.generateLearnQuotes(force: true)
-                    } label: {
-                        Text("More")
+                        Button {
+                            injected.interactors.quotesInteractor.generateLearnQuotes(force: true)
+                        } label: {
+                            Text("More")
+                        }
+                        .frame(width: 150, height: 30)
+                        .buttonStyle(RoundedRectangleButtonStyle())
                     }
-                    .frame(width: 150, height: 30)
-                    .buttonStyle(RoundedRectangleButtonStyle())
-                }
-                .padding(50)
+                    .padding(50)
 
-            } else {
-                QuoteListView(quoteItems: quoteItems, isLearnMode: true)
+                } else {
+                    QuoteListView(quoteItems: quoteItems, isLearnMode: true)
+                }
             }
 
         }
