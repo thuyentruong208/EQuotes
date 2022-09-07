@@ -20,7 +20,7 @@ extension AppEnvironment {
 
         Auth.auth().signInAnonymously() { _, error in
             if let error = error {
-                print(error)
+                logger.error("Error: \(error)")
                 return
             }
         }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7620431C28C8925900A28079 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620431B28C8925900A28079 /* Logger.swift */; };
+		7620431E28C8927000A28079 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620431D28C8927000A28079 /* FileLogger.swift */; };
+		7620432128C892A700A28079 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 7620432028C892A700A28079 /* Logging */; };
+		7620432328C892BA00A28079 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 7620432228C892BA00A28079 /* Logging */; };
+		7620432428C8937900A28079 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620431B28C8925900A28079 /* Logger.swift */; };
 		765023DF28BCE5EC000F3627 /* EQuotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023CF28BCE5EB000F3627 /* EQuotesApp.swift */; };
 		765023E028BCE5EC000F3627 /* EQuotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023CF28BCE5EB000F3627 /* EQuotesApp.swift */; };
 		765023E128BCE5EC000F3627 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023D028BCE5EB000F3627 /* ContentView.swift */; };
@@ -85,6 +90,8 @@
 
 /* Begin PBXFileReference section */
 		2CD3DC719D0210B758CF3E6A /* Pods-EQuotes (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EQuotes (iOS).debug.xcconfig"; path = "Target Support Files/Pods-EQuotes (iOS)/Pods-EQuotes (iOS).debug.xcconfig"; sourceTree = "<group>"; };
+		7620431B28C8925900A28079 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		7620431D28C8927000A28079 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 		765023CF28BCE5EB000F3627 /* EQuotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EQuotesApp.swift; sourceTree = "<group>"; };
 		765023D028BCE5EB000F3627 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		765023D128BCE5EC000F3627 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7620432128C892A700A28079 /* Logging in Frameworks */,
 				E2628F23C0D9A79106014EB3 /* Pods_EQuotes__iOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7620432328C892BA00A28079 /* Logging in Frameworks */,
 				B917CDCFC3A0BC2C84E22122 /* Pods_EQuotes__macOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,6 +169,15 @@
 				EE04968ECB71C37F52BD7D0C /* Pods-EQuotes (macOS).release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		7620431A28C8925000A28079 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				7620431B28C8925900A28079 /* Logger.swift */,
+				7620431D28C8927000A28079 /* FileLogger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 		765023C928BCE5EB000F3627 = {
@@ -211,6 +229,7 @@
 		765023ED28BDC0DA000F3627 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				7620431A28C8925000A28079 /* Logger */,
 				765023EE28BDC0EA000F3627 /* Store.swift */,
 				765023F128BDC413000F3627 /* AppEnvironment.swift */,
 				765023F428BDC438000F3627 /* DIContainer.swift */,
@@ -333,6 +352,7 @@
 			);
 			name = "EQuotes (iOS)";
 			packageProductDependencies = (
+				7620432028C892A700A28079 /* Logging */,
 			);
 			productName = "EQuotes (iOS)";
 			productReference = 765023D628BCE5EC000F3627 /* EQuotes.app */;
@@ -354,6 +374,7 @@
 			);
 			name = "EQuotes (macOS)";
 			packageProductDependencies = (
+				7620432228C892BA00A28079 /* Logging */,
 			);
 			productName = "EQuotes (macOS)";
 			productReference = 765023DC28BCE5EC000F3627 /* EQuotes.app */;
@@ -387,6 +408,7 @@
 			);
 			mainGroup = 765023C928BCE5EB000F3627;
 			packageReferences = (
+				7620431F28C892A700A28079 /* XCRemoteSwiftPackageReference "swift-log" */,
 			);
 			productRefGroup = 765023D728BCE5EC000F3627 /* Products */;
 			projectDirPath = "";
@@ -520,6 +542,7 @@
 				766BFADC28C48F1E007AB759 /* Firebase+ModelName.swift in Sources */,
 				7650241728BDF208000F3627 /* QuoteItemRow.swift in Sources */,
 				766BFACD28C0A4A2007AB759 /* Date+Extensions.swift in Sources */,
+				7620431E28C8927000A28079 /* FileLogger.swift in Sources */,
 				7650241428BDEEB8000F3627 /* QuoteItem.swift in Sources */,
 				765023F528BDC438000F3627 /* DIContainer.swift in Sources */,
 				7650243528BE3AD8000F3627 /* LearnView.swift in Sources */,
@@ -530,6 +553,7 @@
 				7650241B28BDF280000F3627 /* String+Extensions.swift in Sources */,
 				765023FB28BDC4F6000F3627 /* Interacters.swift in Sources */,
 				766BFAD928C48E00007AB759 /* GradientView.swift in Sources */,
+				7620431C28C8925900A28079 /* Logger.swift in Sources */,
 				7650242B28BE13B8000F3627 /* NewQuoteContent.swift in Sources */,
 				7650240D28BDEDFC000F3627 /* Loadable.swift in Sources */,
 				765023E128BCE5EC000F3627 /* ContentView.swift in Sources */,
@@ -571,6 +595,7 @@
 				7650241C28BDF280000F3627 /* String+Extensions.swift in Sources */,
 				765023FC28BDC4F6000F3627 /* Interacters.swift in Sources */,
 				766BFADA28C48E00007AB759 /* GradientView.swift in Sources */,
+				7620432428C8937900A28079 /* Logger.swift in Sources */,
 				7650242C28BE13B8000F3627 /* NewQuoteContent.swift in Sources */,
 				7650240E28BDEDFC000F3627 /* Loadable.swift in Sources */,
 				765023E228BCE5EC000F3627 /* ContentView.swift in Sources */,
@@ -847,6 +872,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7620431F28C892A700A28079 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7620432028C892A700A28079 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7620431F28C892A700A28079 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		7620432228C892BA00A28079 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7620431F28C892A700A28079 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 765023CA28BCE5EB000F3627 /* Project object */;
 }

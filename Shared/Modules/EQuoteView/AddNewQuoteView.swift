@@ -169,7 +169,6 @@ struct ShortcutAddViewModifier: ViewModifier {
             }
             .focusable()
             .onMoveCommand { direction in
-                print(direction)
                 switch direction {
                 case .right, .down:
                     onRightDownCommand()

@@ -14,9 +14,7 @@ protocol EventsInteractor {
 
 class RealEventsInteractor: EventsInteractor {
     func systemError(error: Error, alertUser: Bool) {
-        print("Error: \(error)")
-
-
+        logger.error("Error: \(error)")
     }
 }
 

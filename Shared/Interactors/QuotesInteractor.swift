@@ -43,9 +43,9 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
         .sink(receiveCompletion: { (completion) in
             switch completion {
             case .finished:
-                print("DONE")
+                break
             case .failure(let error):
-                print("Error: \(error)")
+                logger.error("Error: \(error)")
             }
 
         }, receiveValue: { [weak appState] items in
@@ -70,7 +70,7 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
 
             switch completion {
             case .finished:
-                print("DONE")
+                break
             case .failure(let error):
                 if let error = error as? DecodingError {
                     if case .valueNotFound = error {
@@ -160,7 +160,7 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
                 case .finished:
                     appState.quoteState.toDateLoadable = .loaded(newToDate)
                 case let .failure(error):
-                    print("Error: \(error)")
+                    logger.error("Error: \(error)")
                 }
 
             }, receiveValue: { _ in })
@@ -190,9 +190,9 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
         .sink(receiveCompletion: { (completion) in
             switch (completion) {
             case .failure(let error):
-                print("Error: \(error)")
+                logger.error("Error: \(error)")
             case .finished:
-                print("DONE")
+                break
             }
 
         }, receiveValue: { [unowned appState] (items) in
@@ -206,9 +206,9 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
             .sink(receiveCompletion: { (completion) in
                 switch (completion) {
                 case .failure(let error):
-                    print("Error: \(error)")
+                    logger.error("Error: \(error)")
                 case .finished:
-                    print("DONE")
+                    logger.info("[Done] doneLearnQuote \(item.rID)")
                 }
 
             }, receiveValue: { _ in })
