@@ -138,6 +138,7 @@ class RealDatabaseManager: DatabaseManager {
         return publisher.eraseToAnyPublisher()
     }
 
+    // TODO: Handle when keys has more than 10 elements; Firebase will throw error
     func observeList<T: Decodable>(_ dump: T.Type, keys: [String], in collectionPath: String) -> AnyPublisher<[T], Error> {
         listeners[collectionPath + "keys"]?.remove()
         let publisher = PassthroughSubject<[T], Error>()

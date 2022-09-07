@@ -8,6 +8,7 @@
 //  Reference: https://github.com/crspybits/swift-log-file/blob/main/Sources/FileLogging/swift_log_file.swift
 
 import Logging
+import Foundation
 import Combine
 
 // Adapted from https://nshipster.com/textoutputstream/

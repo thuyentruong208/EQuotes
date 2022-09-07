@@ -163,6 +163,7 @@ struct ShortcutAddViewModifier: ViewModifier {
     let onRightDownCommand: () -> ()
 
     func body(content: Content) -> some View {
+        #if os(macOS)
         content
             .onExitCommand {
                 onExitCommand()
@@ -176,5 +177,8 @@ struct ShortcutAddViewModifier: ViewModifier {
                     break
                 }
             }
+        #else
+        content
+        #endif
     }
 }
