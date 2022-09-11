@@ -36,7 +36,7 @@ struct QuoteItemRow: View {
                     .multilineTextAlignment(.center)
             }
         }
-        .frame(alignment: .topLeading)
+        .frame(maxWidth: .infinity)
         .padding()
         .background(Color.white.opacity(0.65))
         .cornerRadius(20)

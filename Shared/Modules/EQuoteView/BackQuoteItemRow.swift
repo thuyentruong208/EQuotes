@@ -19,11 +19,12 @@ struct BackQuoteItemRow: View {
                 if let askContent = quoteItem.ask, !askContent.isEmpty {
                     Text(askContent)
                         .textFormatting(.secondaryText)
+                        .multilineTextAlignment(.center)
                 }
 
                 let images = quoteItem.images?.split(separator: ",").map(String.init) ?? []
 
-                LazyHStack {
+                HStack {
                     ForEach(images, id: \.self) { (image) in
                         AsyncImage(url: URL(string: image)) { (phrase) in
                             switch phrase {
@@ -44,6 +45,7 @@ struct BackQuoteItemRow: View {
                     }
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .center)
             .disabled(true)
             .padding()
             .background(Color.white.opacity(0.65))

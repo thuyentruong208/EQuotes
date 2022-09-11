@@ -177,6 +177,7 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
         .map { (items) in
             items.compactMap { $0.quoteID }
         }
+        .map { Array($0.prefix(10)) }
         .flatMap { [dbManager] (itemIDs) -> AnyPublisher<[QuoteItem], Error> in
             if itemIDs.isEmpty {
                 return Just([])
