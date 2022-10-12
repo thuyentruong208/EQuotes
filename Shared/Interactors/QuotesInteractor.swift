@@ -19,6 +19,7 @@ protocol QuotesInteractor {
     func updateQuote(item: QuoteItem, result: @escaping InteractorResult<Void>)
     func loadLearnQuotes()
     func doneLearnQuote(item: QuoteItem)
+    func autoFillQuestion(item: QuoteItem, result: @escaping (Result<Void, Error>) -> Void)
 
 }
 
@@ -26,11 +27,14 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
 
     fileprivate let dbManager: DatabaseManager
     fileprivate let appState: AppState
+    fileprivate let englishAPI: EnglishAPI
     fileprivate var cancelBag = Set<AnyCancellable>()
 
     init(dbManager: DatabaseManager,
+         englishAPI: EnglishAPI,
          appState: AppState) {
         self.dbManager = dbManager
+        self.englishAPI = englishAPI
         self.appState = appState
     }
 
@@ -230,6 +234,23 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
             .sinkToResult(result)
             .store(in: &cancelBag)
     }
+
+    func autoFillQuestion(item: QuoteItem, result: @escaping (Result<Void, Error>) -> Void) {
+        guard item.ask == nil || item.ask == "" else {
+            return
+        }
+
+        englishAPI.translate(item.en)
+            .map {
+                item.copyWith(ask: $0)
+            }
+            .flatMap { [unowned self] in
+                self.dbManager.update(key: $0.rID, $0, in: DB.quoteItems)
+            }
+            .sinkToResult(result)
+            .store(in: &cancelBag)
+
+    }
 }
 
 struct StubEQuotesInteractor: QuotesInteractor {
@@ -240,5 +261,6 @@ struct StubEQuotesInteractor: QuotesInteractor {
     func updateQuote(item: QuoteItem, result: (Result<Void, Error>) -> Void) { }
     func loadLearnQuotes() {}
     func doneLearnQuote(item: QuoteItem) {}
+    func autoFillQuestion(item: QuoteItem, result: @escaping (Result<Void, Error>) -> Void) {}
 
 }

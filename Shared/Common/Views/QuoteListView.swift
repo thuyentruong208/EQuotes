@@ -106,6 +106,14 @@ struct QuoteListView: View {
         .onTapGesture {
             flipCard(quoteItem, !front)
         }
+        .onAppear {
+            if isLearnMode {
+                injected.interactors.quotesInteractor
+                    .autoFillQuestion(item: quoteItem) { result in
+                        logger.info("autoFillQuestion Result: \(result)")
+                    }
+            }
+        }
     }
 
     func flipCard(_ quoteItem: QuoteItem, _ front: Bool) {

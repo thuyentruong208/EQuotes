@@ -15,6 +15,7 @@ EQuotes is an application helping to learn English by quotes/sentences.
 - Decoupled **Presentation**, **Business Logic**, and **Data Access layers**. Referenced by [Clean Architecture for SwiftUI](https://nalexn.github.io/clean-architecture-swiftui/) / 
 - **Redux-like** centralized AppState as the single source of truth [Slicing Global State in SwiftUI Using Multiple EnvironmentObjects](https://azamsharp.com/2022/07/01/slicing-environment-object.html)
 - Realtime Database using **Firebase**
+- Request remote API: Google Translate API
 
 ## Getting Started
 

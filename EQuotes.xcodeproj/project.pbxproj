@@ -12,6 +12,24 @@
 		7620432128C892A700A28079 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 7620432028C892A700A28079 /* Logging */; };
 		7620432328C892BA00A28079 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 7620432228C892BA00A28079 /* Logging */; };
 		7620432428C8937900A28079 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620431B28C8925900A28079 /* Logger.swift */; };
+		762BA7F228F59BAD008AE874 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7EA28F59BAD008AE874 /* APIClient.swift */; };
+		762BA7F328F59BAD008AE874 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7EA28F59BAD008AE874 /* APIClient.swift */; };
+		762BA7F428F59BAD008AE874 /* APIClientProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7EB28F59BAD008AE874 /* APIClientProvider.swift */; };
+		762BA7F528F59BAD008AE874 /* APIClientProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7EB28F59BAD008AE874 /* APIClientProvider.swift */; };
+		762BA7F628F59BAD008AE874 /* EnglishAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7EC28F59BAD008AE874 /* EnglishAPI.swift */; };
+		762BA7F728F59BAD008AE874 /* EnglishAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7EC28F59BAD008AE874 /* EnglishAPI.swift */; };
+		762BA7F828F59BAD008AE874 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7EE28F59BAD008AE874 /* APIError.swift */; };
+		762BA7F928F59BAD008AE874 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7EE28F59BAD008AE874 /* APIError.swift */; };
+		762BA7FA28F59BAD008AE874 /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7EF28F59BAD008AE874 /* Responses.swift */; };
+		762BA7FB28F59BAD008AE874 /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7EF28F59BAD008AE874 /* Responses.swift */; };
+		762BA7FC28F59BAD008AE874 /* FormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7F028F59BAD008AE874 /* FormData.swift */; };
+		762BA7FD28F59BAD008AE874 /* FormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA7F028F59BAD008AE874 /* FormData.swift */; };
+		762BA80128F59F28008AE874 /* Extension+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA80028F59F28008AE874 /* Extension+Helpers.swift */; };
+		762BA80228F59F28008AE874 /* Extension+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA80028F59F28008AE874 /* Extension+Helpers.swift */; };
+		762BA80428F5A952008AE874 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 762BA80328F5A952008AE874 /* Credentials.plist */; };
+		762BA80528F5A952008AE874 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 762BA80328F5A952008AE874 /* Credentials.plist */; };
+		762BA80A28F5A9E3008AE874 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA80928F5A9E3008AE874 /* Credential.swift */; };
+		762BA80B28F5A9E3008AE874 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BA80928F5A9E3008AE874 /* Credential.swift */; };
 		765023DF28BCE5EC000F3627 /* EQuotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023CF28BCE5EB000F3627 /* EQuotesApp.swift */; };
 		765023E028BCE5EC000F3627 /* EQuotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023CF28BCE5EB000F3627 /* EQuotesApp.swift */; };
 		765023E128BCE5EC000F3627 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765023D028BCE5EB000F3627 /* ContentView.swift */; };
@@ -92,6 +110,15 @@
 		2CD3DC719D0210B758CF3E6A /* Pods-EQuotes (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EQuotes (iOS).debug.xcconfig"; path = "Target Support Files/Pods-EQuotes (iOS)/Pods-EQuotes (iOS).debug.xcconfig"; sourceTree = "<group>"; };
 		7620431B28C8925900A28079 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7620431D28C8927000A28079 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
+		762BA7EA28F59BAD008AE874 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		762BA7EB28F59BAD008AE874 /* APIClientProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientProvider.swift; sourceTree = "<group>"; };
+		762BA7EC28F59BAD008AE874 /* EnglishAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishAPI.swift; sourceTree = "<group>"; };
+		762BA7EE28F59BAD008AE874 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		762BA7EF28F59BAD008AE874 /* Responses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
+		762BA7F028F59BAD008AE874 /* FormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormData.swift; sourceTree = "<group>"; };
+		762BA80028F59F28008AE874 /* Extension+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Helpers.swift"; sourceTree = "<group>"; };
+		762BA80328F5A952008AE874 /* Credentials.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
+		762BA80928F5A9E3008AE874 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		765023CF28BCE5EB000F3627 /* EQuotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EQuotesApp.swift; sourceTree = "<group>"; };
 		765023D028BCE5EB000F3627 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		765023D128BCE5EC000F3627 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -180,10 +207,33 @@
 			path = Logger;
 			sourceTree = "<group>";
 		};
+		762BA7E928F59BAD008AE874 /* Gateways */ = {
+			isa = PBXGroup;
+			children = (
+				762BA7EA28F59BAD008AE874 /* APIClient.swift */,
+				762BA7EB28F59BAD008AE874 /* APIClientProvider.swift */,
+				762BA7EC28F59BAD008AE874 /* EnglishAPI.swift */,
+				762BA80028F59F28008AE874 /* Extension+Helpers.swift */,
+				762BA7ED28F59BAD008AE874 /* Models */,
+			);
+			path = Gateways;
+			sourceTree = "<group>";
+		};
+		762BA7ED28F59BAD008AE874 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				762BA7EE28F59BAD008AE874 /* APIError.swift */,
+				762BA7EF28F59BAD008AE874 /* Responses.swift */,
+				762BA7F028F59BAD008AE874 /* FormData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		765023C928BCE5EB000F3627 = {
 			isa = PBXGroup;
 			children = (
 				7650240028BDC86B000F3627 /* GoogleService-Info.plist */,
+				762BA80328F5A952008AE874 /* Credentials.plist */,
 				765023CE28BCE5EB000F3627 /* Shared */,
 				765023DD28BCE5EC000F3627 /* macOS */,
 				765023D728BCE5EC000F3627 /* Products */,
@@ -204,6 +254,7 @@
 				7650240328BDC8F9000F3627 /* Modules */,
 				7650241928BDF272000F3627 /* Extensions */,
 				7650241228BDEEA6000F3627 /* Models */,
+				762BA7E928F59BAD008AE874 /* Gateways */,
 				765023D128BCE5EC000F3627 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -229,6 +280,7 @@
 		765023ED28BDC0DA000F3627 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				762BA80928F5A9E3008AE874 /* Credential.swift */,
 				7620431A28C8925000A28079 /* Logger */,
 				765023EE28BDC0EA000F3627 /* Store.swift */,
 				765023F128BDC413000F3627 /* AppEnvironment.swift */,
@@ -427,6 +479,7 @@
 			files = (
 				765023E328BCE5EC000F3627 /* Assets.xcassets in Resources */,
 				7650240128BDC86B000F3627 /* GoogleService-Info.plist in Resources */,
+				762BA80428F5A952008AE874 /* Credentials.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +489,7 @@
 			files = (
 				765023E428BCE5EC000F3627 /* Assets.xcassets in Resources */,
 				7650240228BDC86B000F3627 /* GoogleService-Info.plist in Resources */,
+				762BA80528F5A952008AE874 /* Credentials.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,17 +586,22 @@
 				7650241028BDEE2F000F3627 /* CancelBag.swift in Sources */,
 				7650244328BF1BA5000F3627 /* EventsInteractor.swift in Sources */,
 				76E2EB3828C76D81001E8AAD /* Publisher+Extensions.swift in Sources */,
+				762BA7FC28F59BAD008AE874 /* FormData.swift in Sources */,
 				765023EF28BDC0EA000F3627 /* Store.swift in Sources */,
 				7650242E28BE38AC000F3627 /* UserDefault+Data.swift in Sources */,
 				765023F228BDC413000F3627 /* AppEnvironment.swift in Sources */,
+				762BA7FA28F59BAD008AE874 /* Responses.swift in Sources */,
 				766BFAD128C23716007AB759 /* QuoteListView.swift in Sources */,
 				7650242828BE1363000F3627 /* GrowingButton.swift in Sources */,
 				7650243828BEFC83000F3627 /* BackQuoteItemRow.swift in Sources */,
+				762BA7F628F59BAD008AE874 /* EnglishAPI.swift in Sources */,
 				7650242528BE1330000F3627 /* Screen.swift in Sources */,
+				762BA7F828F59BAD008AE874 /* APIError.swift in Sources */,
 				766BFADC28C48F1E007AB759 /* Firebase+ModelName.swift in Sources */,
 				7650241728BDF208000F3627 /* QuoteItemRow.swift in Sources */,
 				766BFACD28C0A4A2007AB759 /* Date+Extensions.swift in Sources */,
 				7620431E28C8927000A28079 /* FileLogger.swift in Sources */,
+				762BA7F428F59BAD008AE874 /* APIClientProvider.swift in Sources */,
 				7650241428BDEEB8000F3627 /* QuoteItem.swift in Sources */,
 				765023F528BDC438000F3627 /* DIContainer.swift in Sources */,
 				7650243528BE3AD8000F3627 /* LearnView.swift in Sources */,
@@ -555,9 +614,12 @@
 				766BFAD928C48E00007AB759 /* GradientView.swift in Sources */,
 				7620431C28C8925900A28079 /* Logger.swift in Sources */,
 				7650242B28BE13B8000F3627 /* NewQuoteContent.swift in Sources */,
+				762BA80128F59F28008AE874 /* Extension+Helpers.swift in Sources */,
+				762BA7F228F59BAD008AE874 /* APIClient.swift in Sources */,
 				7650240D28BDEDFC000F3627 /* Loadable.swift in Sources */,
 				765023E128BCE5EC000F3627 /* ContentView.swift in Sources */,
 				766BFAD628C3696F007AB759 /* HelpersInteractor.swift in Sources */,
+				762BA80A28F5A9E3008AE874 /* Credential.swift in Sources */,
 				76E2EB3B28C7702C001E8AAD /* LearnQuote.swift in Sources */,
 				7650242228BE12FC000F3627 /* AddNewQuoteView.swift in Sources */,
 				7650243128BE3979000F3627 /* Settings.swift in Sources */,
@@ -578,6 +640,7 @@
 				765023F028BDC0EA000F3627 /* Store.swift in Sources */,
 				7650242F28BE38AC000F3627 /* UserDefault+Data.swift in Sources */,
 				765023F328BDC413000F3627 /* AppEnvironment.swift in Sources */,
+				762BA7F528F59BAD008AE874 /* APIClientProvider.swift in Sources */,
 				766BFAD228C23716007AB759 /* QuoteListView.swift in Sources */,
 				7650242928BE1363000F3627 /* GrowingButton.swift in Sources */,
 				7650243928BEFC83000F3627 /* BackQuoteItemRow.swift in Sources */,
@@ -587,9 +650,12 @@
 				766BFACE28C0A4A2007AB759 /* Date+Extensions.swift in Sources */,
 				7650241528BDEEB8000F3627 /* QuoteItem.swift in Sources */,
 				765023F628BDC438000F3627 /* DIContainer.swift in Sources */,
+				762BA7F728F59BAD008AE874 /* EnglishAPI.swift in Sources */,
 				7650243628BE3AD8000F3627 /* LearnView.swift in Sources */,
+				762BA7FB28F59BAD008AE874 /* Responses.swift in Sources */,
 				7650240B28BDEDE6000F3627 /* QuotesInteractor.swift in Sources */,
 				7650244128BF1B6D000F3627 /* Result+Extensions.swift in Sources */,
+				762BA7FD28F59BAD008AE874 /* FormData.swift in Sources */,
 				7650242028BE095F000F3627 /* Theme.swift in Sources */,
 				765023F928BDC4C3000F3627 /* AppState.swift in Sources */,
 				7650241C28BDF280000F3627 /* String+Extensions.swift in Sources */,
@@ -605,6 +671,10 @@
 				7650243228BE3979000F3627 /* Settings.swift in Sources */,
 				76E2EB3628C7024A001E8AAD /* DatabaseManager.swift in Sources */,
 				765023E028BCE5EC000F3627 /* EQuotesApp.swift in Sources */,
+				762BA7F328F59BAD008AE874 /* APIClient.swift in Sources */,
+				762BA7F928F59BAD008AE874 /* APIError.swift in Sources */,
+				762BA80B28F5A9E3008AE874 /* Credential.swift in Sources */,
+				762BA80228F59F28008AE874 /* Extension+Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

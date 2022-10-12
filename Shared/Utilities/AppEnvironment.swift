@@ -29,7 +29,10 @@ extension AppEnvironment {
         let dbManager = RealDatabaseManager()
 
         let interactors = Interactors(
-            quotesInteractor: RealEQuotesInteractor(dbManager: dbManager, appState: appState),
+            quotesInteractor: RealEQuotesInteractor(
+                dbManager: dbManager,
+                englishAPI: RealEnglishAPI(),
+                appState: appState),
             helpersInteractor: RealHelpersInteractor(),
             eventsInteractor: RealEventsInteractor()
         )

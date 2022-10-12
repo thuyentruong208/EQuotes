@@ -25,3 +25,17 @@ struct QuoteItem: Codable, Identifiable {
 extension QuoteItem: Equatable {
 
 }
+
+extension QuoteItem {
+
+    func copyWith(en: String? = nil, vi: String? = nil, ask: String? = nil, images: String? = nil) -> QuoteItem {
+        return QuoteItem(
+            id: self.id,
+            en: en ?? self.en,
+            vi: vi ?? self.vi,
+            ask: ask ?? self.ask,
+            images: images ?? self.images,
+            createdAt: createdAt
+        )
+    }
+}
