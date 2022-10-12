@@ -80,6 +80,7 @@ class RealAPIClient: APIClient {
     fileprivate let baseURL: URL
     fileprivate let session: URLSession
 
+    fileprivate static let logIgnoreEndpoints: [String] = []
     fileprivate static let logFilterRegex = #""[^"]*(key|id|jwt|address|descriptor|signature|password|email|phone|shard|secret|receipt_data)[^"]*"\s*:\s*("[^"]*"|\d+(.\d+)|\[[^\]]*\]|\{[^\{]*\}),*"#
 
     init(baseURLString: String, session: URLSession = APIClientProvider.session) {
@@ -196,7 +197,7 @@ class RealAPIClient: APIClient {
                         do {
                             if !Self.logIgnoreEndpoints.contains(where: { request.url?.absoluteString.contains($0) ?? false }),
                                let responseStr = String(data: data, encoding: .utf8) {
-                                let regex = try NSRegularExpression(pattern: APIClient.logFilterRegex, options: .caseInsensitive)
+                                let regex = try NSRegularExpression(pattern: Self.logFilterRegex, options: .caseInsensitive)
                                 let logStr = regex.stringByReplacingMatches(in: responseStr,
                                                                             range: NSRange(location: 0, length: responseStr.count),
                                                                             withTemplate: "")
