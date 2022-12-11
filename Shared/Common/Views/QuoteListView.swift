@@ -20,7 +20,7 @@ struct QuoteListView: View {
         self.isLearnMode = isLearnMode
 
         if isLearnMode {
-            _showBackFaceQuoteItems = State(initialValue: Set(quoteItems.map(\.rID))) 
+            _showBackFaceQuoteItems = State(initialValue: Set(quoteItems.map(\.rID)))
         }
     }
 
@@ -42,6 +42,12 @@ struct QuoteListView: View {
                                         .doneLearnQuote(item: quoteItem)
                                 }
                             }))
+                            .onAppear {
+                                if isLearnMode {
+                                    showBackFaceQuoteItems.insert(quoteItem.rID)
+                                }
+                            }
+
                 }
             }
             .sheet(item: $editQuoteView, content: { quoteItem in
