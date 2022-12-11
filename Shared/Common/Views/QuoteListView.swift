@@ -84,18 +84,32 @@ struct QuoteListView: View {
             .padding(8)
         }
 #else
-        return quoteItemView(quoteItem: quoteItem)
-            .overlay(
+        return VStack(spacing: 0) {
+
+            HStack(spacing: 15) {
+                Image(systemName: "pencil.tip.crop.circle.badge.arrow.forward")
+                    .resizable()
+                    .frame(width: 22, height: 20)
+                    .foregroundColor(Color.black)
+                    .onTapGesture {
+                        editQuoteView = quoteItem
+                    }
+
                 Image(systemName: "speaker.wave.2.fill")
                     .resizable()
-                    .frame(width: 15, height: 15)
+                    .frame(width: 22, height: 20)
                     .foregroundColor(Color.black)
-                    .offset(x: -13, y: -20)
                     .onTapGesture {
                         injected.interactors.helpersInteractor.speak(text: quoteItem.en)
                     }
-                , alignment: .bottomTrailing
-            )
+
+
+            }
+            .padding(EdgeInsets(top: 3, leading: 8, bottom: 3, trailing: 8))
+            .background(Color.white)
+
+            quoteItemView(quoteItem: quoteItem)
+        }
 #endif
     }
 
