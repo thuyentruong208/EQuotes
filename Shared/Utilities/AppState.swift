@@ -17,6 +17,7 @@ class QuoteState: ObservableObject {
     var quotesListener: ListenerRegistration?
     @Published var toDateLoadable: Loadable<Date?> = .notRequested
     @Published var learnQuotesLoadable: Loadable<[QuoteItem]> = .notRequested
+    @Published var learnedCount: Int?
     var learnQuotesListener: ListenerRegistration?
     var toDateDataListener: ListenerRegistration?
 }

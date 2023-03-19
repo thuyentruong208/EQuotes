@@ -18,6 +18,7 @@ protocol QuotesInteractor {
     func addQuote(item: QuoteItem, result: @escaping InteractorResult<Void>)
     func updateQuote(item: QuoteItem, result: @escaping InteractorResult<Void>)
     func loadLearnQuotes()
+    func loadLearnData()
     func doneLearnQuote(item: QuoteItem)
     func autoFillQuestion(item: QuoteItem, result: @escaping (Result<Void, Error>) -> Void)
 
@@ -206,6 +207,15 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
         .store(in: &cancelBag)
     }
 
+    func loadLearnData() {
+        if !Calendar.current.isDateInToday(UserDefaults.standard.learnedAt) {
+            UserDefaults.standard.learnedAt = Date()
+            UserDefaults.standard.learnedCount = 0
+        }
+
+        appState.quoteState.learnedCount = UserDefaults.standard.learnedCount
+    }
+
     func doneLearnQuote(item: QuoteItem) {
         dbManager.delete(DB.Fields.quoteID, isEqualTo: item.rID, in: DB.learnQuotes)
             .sink(receiveCompletion: { (completion) in
@@ -213,6 +223,10 @@ class RealEQuotesInteractor: ObservableObject, QuotesInteractor {
                 case .failure(let error):
                     logger.error("Error: \(error)")
                 case .finished:
+                    UserDefaults.standard.learnedCount += 1
+                    UserDefaults.standard.learnedAt = Date()
+
+                    self.loadLearnData()
                     logger.info("[Done] doneLearnQuote \(item.rID)")
                 }
 
@@ -260,6 +274,7 @@ struct StubEQuotesInteractor: QuotesInteractor {
     func addQuote(item: QuoteItem, result: InteractorResult<Void>) {}
     func updateQuote(item: QuoteItem, result: (Result<Void, Error>) -> Void) { }
     func loadLearnQuotes() {}
+    func loadLearnData() {}
     func doneLearnQuote(item: QuoteItem) {}
     func autoFillQuestion(item: QuoteItem, result: @escaping (Result<Void, Error>) -> Void) {}
 

@@ -37,6 +37,16 @@ struct EQuoteView: View {
                 }
 
             }
+
+
+            Text("\(quoteState.learnedCount ?? 0)")
+                .font(.system(size: 30))
+                .fontWeight(.bold)
+                .foregroundColor(Color.green)
+                .padding()
+                .background(Color.white)
+                .clipShape(Capsule())
+                .offset(x: -30, y: -30)
         }
         .ignoresSafeArea(.all, edges: .bottom)
         .onAppear {

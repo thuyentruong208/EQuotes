@@ -17,6 +17,7 @@ struct LearnView: View {
             if let toDate = quoteState.toDateLoadable.value {
                 Text(toDate?.formatted() ?? "")
                     .textFormatting(.primaryTextWith(Color.white))
+
             }
 
             switch quoteState.learnQuotesLoadable {
@@ -41,6 +42,7 @@ struct LearnView: View {
 
                 } else {
                     QuoteListView(quoteItems: quoteItems, isLearnMode: true)
+                        .padding(.bottom, 40)
                 }
             }
 
@@ -49,11 +51,13 @@ struct LearnView: View {
             injected.interactors.quotesInteractor.loadSettings()
             injected.interactors.quotesInteractor
                 .loadLearnQuotes()
+            injected.interactors.quotesInteractor.loadLearnData()
         }
         .onChange(of: quoteState.toDateLoadable) { _ in
             injected.interactors.quotesInteractor.generateLearnQuotes(force: false)
         }
         .offset(y: -60)
+
 
     }
 }
